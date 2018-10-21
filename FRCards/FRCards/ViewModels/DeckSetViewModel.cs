@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FRCards.ViewModels
 {
-    public class DeckSetViewModel : BindableBase
+    public abstract class DeckSetViewModel : BindableBase
     {
 
         private DeckViewModel activeDeck;
@@ -36,5 +36,61 @@ namespace FRCards.ViewModels
             get => selectionCards;
             set => SetProperty(ref selectionCards, value);
         }
+
+
+        private Card selectedCard;
+        public Card SelectedCard
+        {
+            get => selectedCard;
+            set => SetProperty(ref selectedCard, value);
+        }
+
+        public void DrawSelectionCards()
+        {
+            Card[] newSelectionCards = new Card[3];
+            
+            for (int idx=0; idx < 3; idx++)
+            {
+                if (!ActiveDeck.HasCards)
+                    MakeUsedDeckActive();
+
+                newSelectionCards[idx] = ActiveDeck.HasCards ? ActiveDeck.DrawTopCard() : GetExhaustionCard();
+            }
+        }
+
+        public void SelectCard(int selection)
+        {
+            for (int idx=0; idx < 3; idx++)
+            {
+                if (idx == selection)
+                    SelectedCard = SelectionCards[idx];
+                else
+                    UsedCards.Model.Cards.Push(SelectionCards[idx]);
+            }
+
+            SelectionCards = null;
+        }
+
+        public void MakeUsedDeckActive()
+        {
+            UsedCards.Shuffle();
+            ActiveDeck = UsedCards;
+            UsedCards = new DeckViewModel();
+        }
+
+        public void FinishRound()
+        {
+            Discarded.Model.Cards.Push(SelectedCard);
+            SelectedCard = null;
+        }
+
+        public void FinishRoundWithExhaustion()
+        {
+            FinishRound();
+            UsedCards.Model.Cards.Push(GetExhaustionCard());
+        }
+
+        public abstract DeckViewModel CreateNewDeck();
+        public abstract Card GetExhaustionCard();
     }
 }
