@@ -17,31 +17,26 @@ namespace FRCards.ViewModels
             };
         }
 
-        public static RouleurDeckSetViewModel CreateNewDeckSet()
+        public RouleurDeckSetViewModel()
         {
-            RouleurDeckSetViewModel newDeckSet = new RouleurDeckSetViewModel()
-            {
-                UsedCards = new DeckViewModel(),
-                ActiveDeck = new DeckViewModel(),
-                Discarded = new DeckViewModel(),
-                SelectionCards = null,
-                SelectedCard = null
-            };
+            UsedCards = new DeckViewModel();
+            ActiveDeck = new DeckViewModel();
+            Discarded = new DeckViewModel();
+            SelectionCards = null;
+            SelectedCard = null;
 
             for (int count = 0; count < 3; count++)
-                newDeckSet.ActiveDeck.Model.Cards.Push(new Card { Movement = 3, Rider = RiderType.Rouleur, IsExhaustion = false });
+                ActiveDeck.Model.Cards.Push(new Card { Movement = 3, Rider = RiderType.Rouleur, IsExhaustion = false });
             for (int count = 0; count < 3; count++)
-                newDeckSet.ActiveDeck.Model.Cards.Push(new Card { Movement = 4, Rider = RiderType.Rouleur, IsExhaustion = false });
+                ActiveDeck.Model.Cards.Push(new Card { Movement = 4, Rider = RiderType.Rouleur, IsExhaustion = false });
             for (int count = 0; count < 3; count++)
-                newDeckSet.ActiveDeck.Model.Cards.Push(new Card { Movement = 5, Rider = RiderType.Rouleur, IsExhaustion = false });
+                ActiveDeck.Model.Cards.Push(new Card { Movement = 5, Rider = RiderType.Rouleur, IsExhaustion = false });
             for (int count = 0; count < 3; count++)
-                newDeckSet.ActiveDeck.Model.Cards.Push(new Card { Movement = 6, Rider = RiderType.Rouleur, IsExhaustion = false });
+                ActiveDeck.Model.Cards.Push(new Card { Movement = 6, Rider = RiderType.Rouleur, IsExhaustion = false });
             for (int count = 0; count < 3; count++)
-                newDeckSet.ActiveDeck.Model.Cards.Push(new Card { Movement = 7, Rider = RiderType.Rouleur, IsExhaustion = false });
+                ActiveDeck.Model.Cards.Push(new Card { Movement = 7, Rider = RiderType.Rouleur, IsExhaustion = false });
 
-            newDeckSet.ActiveDeck.Shuffle();
-
-            return newDeckSet;
+            ActiveDeck.Shuffle();
         }
     }
 }
