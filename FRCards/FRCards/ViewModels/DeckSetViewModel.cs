@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace FRCards.ViewModels
 {
@@ -30,19 +32,49 @@ namespace FRCards.ViewModels
             set => SetProperty(ref discarded, value);
         }
 
+
+        private bool canDrawCards;
+        public bool CanDrawCards
+        {
+            get => canDrawCards;
+            set
+            {
+                if (SetProperty(ref canDrawCards, value))
+                {
+                    drawCardsCommand.ChangeCanExecute();
+                }
+            }
+        }
+
+        public bool CanSelect => selectionCards != null;
+
         private Card[] selectionCards;
         public Card[] SelectionCards
         {
             get => selectionCards;
-            set => SetProperty(ref selectionCards, value);
+            set
+            {
+                if (SetProperty(ref selectionCards, value))
+                {
+                    OnPropertyChanged(nameof(CanSelect));
+                    selectCardCommand.ChangeCanExecute();
+                }
+            }
         }
-
 
         private Card selectedCard;
         public Card SelectedCard
         {
             get => selectedCard;
-            set => SetProperty(ref selectedCard, value);
+            set
+            {
+                if (SetProperty(ref selectedCard, value))
+                {
+                    OnPropertyChanged(nameof(HasSelectedCard));
+                    finishRoundCommand.ChangeCanExecute();
+                    finishRoundWithExhaustionCommand.ChangeCanExecute();
+                }
+            }
         }
 
         public void DrawSelectionCards()
@@ -56,6 +88,8 @@ namespace FRCards.ViewModels
 
                 newSelectionCards[idx] = ActiveDeck.HasCards ? ActiveDeck.DrawTopCard() : GetExhaustionCard();
             }
+            CanDrawCards = false;
+            SelectionCards = newSelectionCards;
         }
 
         public void SelectCard(int selection)
@@ -78,6 +112,8 @@ namespace FRCards.ViewModels
             UsedCards = new DeckViewModel();
         }
 
+        public bool HasSelectedCard => SelectedCard != null;
+
         public void FinishRound()
         {
             Discarded.Model.Cards.Push(SelectedCard);
@@ -92,5 +128,17 @@ namespace FRCards.ViewModels
 
         public abstract DeckViewModel CreateNewDeck();
         public abstract Card GetExhaustionCard();
+
+        private Command drawCardsCommand;
+        public ICommand DrawCardsCommand => drawCardsCommand ?? (drawCardsCommand = new Command(DrawSelectionCards, () => CanDrawCards));
+
+        private Command<int> selectCardCommand;
+        public ICommand SelectCardCommand => drawCardsCommand ?? (drawCardsCommand = new Command<int>(cardNo => SelectCard(cardNo), cardNo => CanSelect));
+
+        private Command finishRoundCommand;
+        public ICommand FinishRoundCommand => finishRoundCommand ?? (finishRoundCommand = new Command(FinishRound, () => HasSelectedCard));
+
+        private Command finishRoundWithExhaustionCommand;
+        public ICommand FinishRoundWithExhaustionCommand => finishRoundWithExhaustionCommand ?? (finishRoundWithExhaustionCommand = new Command(FinishRoundWithExhaustion, () => HasSelectedCard));
     }
 }
