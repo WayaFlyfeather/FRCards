@@ -126,7 +126,6 @@ namespace FRCards.ViewModels
             UsedCards.Model.Cards.Push(GetExhaustionCard());
         }
 
-        public abstract DeckViewModel CreateNewDeck();
         public abstract Card GetExhaustionCard();
 
         private Command drawCardsCommand;
