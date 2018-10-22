@@ -44,6 +44,11 @@ namespace FRCards.ViewModels
             {
                 if (SprinteurSet.HasSelectedCard && !RouleurSet.HasSelectedCard)
                     RouleurSet.CanDrawCards = true;
+                else if (RouleurSet.HasSelectedCard && SprinteurSet.HasSelectedCard)
+                {
+                    SprinteurSet.CanFinishRound = true;
+                    RouleurSet.CanFinishRound = true;
+                }
                 else if (!RouleurSet.HasSelectedCard && !SprinteurSet.HasSelectedCard)
                 {
                     SprinteurSet.CanDrawCards = true;
@@ -64,6 +69,11 @@ namespace FRCards.ViewModels
             {
                 if (RouleurSet.HasSelectedCard && !SprinteurSet.HasSelectedCard)
                     SprinteurSet.CanDrawCards = true;
+                else if (RouleurSet.HasSelectedCard && SprinteurSet.HasSelectedCard)
+                {
+                    SprinteurSet.CanFinishRound = true;
+                    RouleurSet.CanFinishRound = true;
+                }
                 else if (!RouleurSet.HasSelectedCard && !SprinteurSet.HasSelectedCard)
                 {
                     SprinteurSet.CanDrawCards = true;

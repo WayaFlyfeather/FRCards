@@ -46,6 +46,20 @@ namespace FRCards.ViewModels
             }
         }
 
+        private bool canFinishRound;
+        public bool CanFinishRound
+        {
+            get => canFinishRound;
+            set
+            {
+                if (SetProperty(ref canFinishRound, value))
+                {
+                    finishRoundCommand?.ChangeCanExecute();
+                    finishRoundWithExhaustionCommand?.ChangeCanExecute();
+                }
+            }
+        }
+
         public bool CanSelect => selectionCards != null;
 
         private Card[] selectionCards;
@@ -71,8 +85,6 @@ namespace FRCards.ViewModels
                 if (SetProperty(ref selectedCard, value))
                 {
                     OnPropertyChanged(nameof(HasSelectedCard));
-                    finishRoundCommand?.ChangeCanExecute();
-                    finishRoundWithExhaustionCommand?.ChangeCanExecute();
                 }
             }
         }
@@ -118,6 +130,7 @@ namespace FRCards.ViewModels
         {
             Discarded.AddCard(SelectedCard);
             SelectedCard = null;
+            CanFinishRound = false;
         }
 
         public void FinishRoundWithExhaustion()
