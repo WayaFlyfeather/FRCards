@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FRCards.Views.DeckSetView">
+  <ContentView.Content>
+      <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="Active Deck" />
+                    <Label Text="{Binding ActiveDeck.CardCount}" />
+                    <Button Text="Draw 3" Command="{Binding DrawCardsCommand}" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="Used Deck" />
+                    <Label Text="{Binding UsedCards.CardCount}" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="Discarded" />
+                    <Label Text="{Binding Discarded.CardCount}" />
+                </StackLayout>
+            </StackLayout>
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>
