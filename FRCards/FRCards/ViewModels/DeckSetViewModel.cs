@@ -131,8 +131,8 @@ namespace FRCards.ViewModels
         private Command drawCardsCommand;
         public ICommand DrawCardsCommand => drawCardsCommand ?? (drawCardsCommand = new Command(DrawSelectionCards, () => CanDrawCards));
 
-        private Command<int> selectCardCommand;
-        public ICommand SelectCardCommand => selectCardCommand ?? (selectCardCommand = new Command<int>(cardNo => SelectCard(cardNo), cardNo => CanSelect));
+        private Command<string> selectCardCommand;
+        public ICommand SelectCardCommand => selectCardCommand ?? (selectCardCommand = new Command<string>(cardNo => SelectCard(int.Parse(cardNo)), cardNo => CanSelect));
 
         private Command finishRoundCommand;
         public ICommand FinishRoundCommand => finishRoundCommand ?? (finishRoundCommand = new Command(FinishRound, () => HasSelectedCard));
