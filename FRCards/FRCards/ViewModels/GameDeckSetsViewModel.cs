@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace FRCards.ViewModels
@@ -31,14 +32,44 @@ namespace FRCards.ViewModels
             sprinteurSet.PropertyChanged += SprinteurSet_PropertyChanged;
         }
 
-        private void SprinteurSet_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void SprinteurSet_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (String.IsNullOrEmpty(e.PropertyName) || e.PropertyName==nameof(SprinteurDeckSetViewModel.CanSelect))
+            {
+                if (SprinteurSet.CanSelect)
+                    RouleurSet.CanDrawCards = false;
+            }
+
+            if (String.IsNullOrEmpty(e.PropertyName) || e.PropertyName == nameof(SprinteurDeckSetViewModel.HasSelectedCard))
+            {
+                if (SprinteurSet.HasSelectedCard && !RouleurSet.HasSelectedCard)
+                    RouleurSet.CanDrawCards = true;
+                else if (!RouleurSet.HasSelectedCard && !SprinteurSet.HasSelectedCard)
+                {
+                    SprinteurSet.CanDrawCards = true;
+                    RouleurSet.CanDrawCards = true;
+                }
+            }
         }
 
-        private void RouleurSet_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void RouleurSet_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (String.IsNullOrEmpty(e.PropertyName) || e.PropertyName == nameof(RouleurDeckSetViewModel.CanSelect))
+            {
+                if (RouleurSet.CanSelect)
+                    SprinteurSet.CanDrawCards = false;
+            }
+
+            if (String.IsNullOrEmpty(e.PropertyName) || e.PropertyName == nameof(RouleurDeckSetViewModel.HasSelectedCard))
+            {
+                if (RouleurSet.HasSelectedCard && !SprinteurSet.HasSelectedCard)
+                    SprinteurSet.CanDrawCards = true;
+                else if (!RouleurSet.HasSelectedCard && !SprinteurSet.HasSelectedCard)
+                {
+                    SprinteurSet.CanDrawCards = true;
+                    RouleurSet.CanDrawCards = true;
+                }
+            }
         }
     }
 }
