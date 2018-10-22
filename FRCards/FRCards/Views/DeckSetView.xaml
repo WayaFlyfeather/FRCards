@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="thisDeckSetView"
              x:Class="FRCards.Views.DeckSetView">
   <ContentView.Content>
       <StackLayout>
+            <Label BindingContext="{x:Reference thisDeckSetView}" Text="{Binding Rider}" FontSize="Large" HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal">
                 <StackLayout HorizontalOptions="CenterAndExpand">
                     <Label Text="Active Deck" />
