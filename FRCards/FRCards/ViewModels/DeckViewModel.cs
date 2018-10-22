@@ -56,5 +56,12 @@ namespace FRCards.ViewModels
 
             return null; // throw exception?
         }
+
+        public void AddCard(Card card)
+        {
+            Model.Cards.Push(card);
+            OnPropertyChanged(nameof(CardCount));
+            OnPropertyChanged(nameof(HasCards));
+        }
     }
 }

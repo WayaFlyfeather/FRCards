@@ -99,7 +99,7 @@ namespace FRCards.ViewModels
                 if (idx == selection)
                     SelectedCard = SelectionCards[idx];
                 else
-                    UsedCards.Model.Cards.Push(SelectionCards[idx]);
+                    UsedCards.AddCard(SelectionCards[idx]);
             }
 
             SelectionCards = null;
@@ -116,14 +116,14 @@ namespace FRCards.ViewModels
 
         public void FinishRound()
         {
-            Discarded.Model.Cards.Push(SelectedCard);
+            Discarded.AddCard(SelectedCard);
             SelectedCard = null;
         }
 
         public void FinishRoundWithExhaustion()
         {
             FinishRound();
-            UsedCards.Model.Cards.Push(GetExhaustionCard());
+            UsedCards.AddCard(GetExhaustionCard());
         }
 
         public abstract Card GetExhaustionCard();
