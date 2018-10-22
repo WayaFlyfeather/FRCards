@@ -4,9 +4,13 @@
              xmlns:local="clr-namespace:FRCards.Views"
              x:Class="FRCards.Views.FRGamePage">
     <ContentPage.Content>
-        <StackLayout>
-            <local:DeckSetView BindingContext="{Binding RouleurSet}" Rider="Rouleur" />
-            <local:DeckSetView BindingContext="{Binding SprinteurSet}" Rider="Sprinteur" />
-        </StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <local:DeckSetView Grid.Row="0" BindingContext="{Binding RouleurSet}" Rider="Rouleur" />
+            <local:DeckSetView Grid.Row="1" BindingContext="{Binding SprinteurSet}" Rider="Sprinteur" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
