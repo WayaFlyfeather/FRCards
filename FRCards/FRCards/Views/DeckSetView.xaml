@@ -37,6 +37,9 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
+            <StackLayout IsVisible="{Binding HasSelectedCard}" HorizontalOptions="Center">
+                <Label Text="{Binding SelectedCard.Movement}" />
+            </StackLayout>
         </StackLayout>
   </ContentView.Content>
 </ContentView>
