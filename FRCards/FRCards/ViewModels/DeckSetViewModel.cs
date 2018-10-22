@@ -41,7 +41,7 @@ namespace FRCards.ViewModels
             {
                 if (SetProperty(ref canDrawCards, value))
                 {
-                    drawCardsCommand.ChangeCanExecute();
+                    drawCardsCommand?.ChangeCanExecute();
                 }
             }
         }
@@ -57,7 +57,7 @@ namespace FRCards.ViewModels
                 if (SetProperty(ref selectionCards, value))
                 {
                     OnPropertyChanged(nameof(CanSelect));
-                    selectCardCommand.ChangeCanExecute();
+                    selectCardCommand?.ChangeCanExecute();
                 }
             }
         }
@@ -71,8 +71,8 @@ namespace FRCards.ViewModels
                 if (SetProperty(ref selectedCard, value))
                 {
                     OnPropertyChanged(nameof(HasSelectedCard));
-                    finishRoundCommand.ChangeCanExecute();
-                    finishRoundWithExhaustionCommand.ChangeCanExecute();
+                    finishRoundCommand?.ChangeCanExecute();
+                    finishRoundWithExhaustionCommand?.ChangeCanExecute();
                 }
             }
         }
@@ -132,7 +132,7 @@ namespace FRCards.ViewModels
         public ICommand DrawCardsCommand => drawCardsCommand ?? (drawCardsCommand = new Command(DrawSelectionCards, () => CanDrawCards));
 
         private Command<int> selectCardCommand;
-        public ICommand SelectCardCommand => drawCardsCommand ?? (drawCardsCommand = new Command<int>(cardNo => SelectCard(cardNo), cardNo => CanSelect));
+        public ICommand SelectCardCommand => selectCardCommand ?? (selectCardCommand = new Command<int>(cardNo => SelectCard(cardNo), cardNo => CanSelect));
 
         private Command finishRoundCommand;
         public ICommand FinishRoundCommand => finishRoundCommand ?? (finishRoundCommand = new Command(FinishRound, () => HasSelectedCard));

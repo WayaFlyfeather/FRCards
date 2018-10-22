@@ -15,6 +15,14 @@ namespace FRCards.ViewModels
             set => SetProperty(ref model, value);
         }
 
+        public DeckViewModel()
+        {
+            model = new Deck()
+            {
+                Cards = new Stack<Card>()
+            };
+        }
+
         public int CardCount => Model.Cards.Count;
         public bool HasCards => CardCount > 0;
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FRCards.ViewModels;
+using FRCards.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +13,7 @@ namespace FRCards
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new FRGamePage() { BindingContext = new GameDeckSetsViewModel() };
         }
 
         protected override void OnStart()
