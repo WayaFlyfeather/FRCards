@@ -37,6 +37,10 @@
             </StackLayout>
             <StackLayout IsVisible="{Binding HasSelectedCard}" HorizontalOptions="Center">
                 <Label Text="{Binding SelectedCard.Movement}" />
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Finish" Command="{Binding FinishRoundCommand}" />
+                    <Button Text="Finish with Exhaustion" Command="{Binding FinishRoundWithExhaustionCommand}" />
+                </StackLayout>
             </StackLayout>
         </StackLayout>
   </ContentView.Content>
