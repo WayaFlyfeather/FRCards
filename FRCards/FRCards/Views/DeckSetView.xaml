@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:FRCards.Converters"
              x:Name="thisDeckSetView"
              x:Class="FRCards.Views.DeckSetView">
-  <ContentView.Content>
-      <StackLayout>
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <conv:CardToImageSourceConverter x:Key="CardToImageSource" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout>
             <Label BindingContext="{x:Reference thisDeckSetView}" Text="{Binding Rider}" FontSize="Large" HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal">
                 <StackLayout HorizontalOptions="CenterAndExpand">
@@ -23,17 +29,22 @@
             </StackLayout>
             <StackLayout IsVisible="{Binding CanSelect}" Orientation="Horizontal">
                 <StackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="{Binding SelectionCards[0].Movement}" />
-                    <Button Text="Select" Command="{Binding SelectCardCommand}" CommandParameter="0" />
+                    <Image Source="{Binding SelectionCards[0], Converter={StaticResource CardToImageSource}}" WidthRequest="120" />
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Image Source="{Binding SelectionCards[1], Converter={StaticResource CardToImageSource}}" WidthRequest="120" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Image Source="{Binding SelectionCards[2], Converter={StaticResource CardToImageSource}}" WidthRequest="120" />
+                </StackLayout>
+                <!--<StackLayout HorizontalOptions="CenterAndExpand">
                     <Label Text="{Binding SelectionCards[1].Movement}" />
                     <Button Text="Select" Command="{Binding SelectCardCommand}" CommandParameter="1" />
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand">
                     <Label Text="{Binding SelectionCards[2].Movement}" />
                     <Button Text="Select" Command="{Binding SelectCardCommand}" CommandParameter="2" />
-                </StackLayout>
+                </StackLayout>-->
             </StackLayout>
             <StackLayout IsVisible="{Binding HasSelectedCard}" HorizontalOptions="Center">
                 <Label Text="{Binding SelectedCard.Movement}" />
