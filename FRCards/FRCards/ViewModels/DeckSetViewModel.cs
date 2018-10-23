@@ -106,6 +106,9 @@ namespace FRCards.ViewModels
 
         public void SelectCard(int selection)
         {
+            if (!CanSelect)
+                return;
+
             for (int idx=0; idx < 3; idx++)
             {
                 if (idx == selection)
@@ -128,6 +131,9 @@ namespace FRCards.ViewModels
 
         public void FinishRound()
         {
+            if (!CanFinishRound)
+                return;
+
             Discarded.AddCard(SelectedCard);
             SelectedCard = null;
             CanFinishRound = false;
@@ -135,6 +141,9 @@ namespace FRCards.ViewModels
 
         public void FinishRoundWithExhaustion()
         {
+            if (!CanFinishRound)
+                return;
+
             FinishRound();
             UsedCards.AddCard(GetExhaustionCard());
         }
