@@ -10,6 +10,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\R3.png" />
+    <None Remove="Assets\R4.png" />
+    <None Remove="Assets\R5.png" />
+    <None Remove="Assets\R6.png" />
+    <None Remove="Assets\R7.png" />
+    <None Remove="Assets\RBack.png" />
+    <None Remove="Assets\RExh.png" />
+    <None Remove="Assets\S2.png" />
+    <None Remove="Assets\S3.png" />
+    <None Remove="Assets\S4.png" />
+    <None Remove="Assets\S5.png" />
+    <None Remove="Assets\S9.png" />
+    <None Remove="Assets\SBack.png" />
+    <None Remove="Assets\SExh.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\R3.png" />
+    <EmbeddedResource Include="Assets\R4.png" />
+    <EmbeddedResource Include="Assets\R5.png" />
+    <EmbeddedResource Include="Assets\R6.png" />
+    <EmbeddedResource Include="Assets\R7.png" />
+    <EmbeddedResource Include="Assets\RBack.png" />
+    <EmbeddedResource Include="Assets\RExh.png" />
+    <EmbeddedResource Include="Assets\S2.png" />
+    <EmbeddedResource Include="Assets\S3.png" />
+    <EmbeddedResource Include="Assets\S4.png" />
+    <EmbeddedResource Include="Assets\S5.png" />
+    <EmbeddedResource Include="Assets\S9.png" />
+    <EmbeddedResource Include="Assets\SBack.png" />
+    <EmbeddedResource Include="Assets\SExh.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
   </ItemGroup>
 
