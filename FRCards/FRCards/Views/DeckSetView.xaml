@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FRCards.Views"
              xmlns:conv="clr-namespace:FRCards.Converters"
+             xmlns:vm="clr-namespace:FRCards.ViewModels"
              x:Name="thisDeckSetView"
+             BindingContext="{x:Static vm:DesignTimeViewModels.DesignRouleurDeckSetViewModel}"
              x:Class="FRCards.Views.DeckSetView">
     <ContentView.Resources>
         <ResourceDictionary>
