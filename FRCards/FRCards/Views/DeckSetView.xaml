@@ -52,16 +52,17 @@
                     <Button Text="Select" Command="{Binding SelectCardCommand}" CommandParameter="2" />
                 </StackLayout>-->
             </StackLayout>
-            <StackLayout IsVisible="{Binding HasSelectedCard}" HorizontalOptions="Center">
+            <StackLayout IsVisible="{Binding HasSelectedCard}" HorizontalOptions="Center" Orientation="Horizontal">
                 <Image Source="{Binding SelectedCard, Converter={StaticResource CardToImageSource}}" WidthRequest="120" HorizontalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding FinishRoundCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Finish" Command="{Binding FinishRoundCommand}" />
-                    <Button Text="Finish with Exhaustion" Command="{Binding FinishRoundWithExhaustionCommand}" />
-                </StackLayout>
+                <Image Source="{Binding DisplayExhaustionCard, Converter={StaticResource CardToImageSource}}" WidthRequest="120" HorizontalOptions="CenterAndExpand" IsVisible="{Binding CanFinishRound}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding FinishRoundWithExhaustionCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
         </StackLayout>
   </ContentView.Content>

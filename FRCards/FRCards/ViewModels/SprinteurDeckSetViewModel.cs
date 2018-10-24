@@ -17,7 +17,7 @@ namespace FRCards.ViewModels
             };
         }
 
-        public SprinteurDeckSetViewModel()
+        public SprinteurDeckSetViewModel() : base()
         {
             UsedCards = new DeckViewModel();
             ActiveDeck = new DeckViewModel();

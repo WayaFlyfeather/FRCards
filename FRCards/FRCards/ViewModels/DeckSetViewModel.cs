@@ -9,6 +9,10 @@ namespace FRCards.ViewModels
 {
     public abstract class DeckSetViewModel : BindableBase
     {
+        protected DeckSetViewModel()
+        {
+            displayExhaustionCard = GetExhaustionCard();
+        }
 
         private DeckViewModel activeDeck;
         public DeckViewModel ActiveDeck
@@ -32,6 +36,8 @@ namespace FRCards.ViewModels
             set => SetProperty(ref discarded, value);
         }
 
+        readonly Card displayExhaustionCard;
+        public Card DisplayExhaustionCard => displayExhaustionCard; 
 
         private bool canDrawCards;
         public bool CanDrawCards

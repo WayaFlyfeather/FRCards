@@ -17,7 +17,7 @@ namespace FRCards.ViewModels
             };
         }
 
-        public RouleurDeckSetViewModel()
+        public RouleurDeckSetViewModel() : base()
         {
             UsedCards = new DeckViewModel();
             ActiveDeck = new DeckViewModel();
