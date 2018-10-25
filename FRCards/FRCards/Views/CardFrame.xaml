@@ -8,11 +8,12 @@
              BorderColor="Black"
              CornerRadius="3"
              BackgroundColor="White"
-             Padding="6"
+             Padding="{Binding Rider, Converter={StaticResource RiderTypeToThickness}}"
              x:Class="FRCards.Views.CardFrame">
     <Frame.Resources>
         <ResourceDictionary>
             <conv:CardToImageSourceConverter x:Key="CardToImageSource" />
+            <conv:RiderTypeToThicknessConverter x:Key="RiderTypeToThickness" />
         </ResourceDictionary>
     </Frame.Resources>
     <Frame.Content>
