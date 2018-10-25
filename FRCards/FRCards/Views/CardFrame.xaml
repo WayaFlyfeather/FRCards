@@ -5,13 +5,14 @@
              xmlns:vm="clr-namespace:FRCards.ViewModels"
              x:Name="thisCardFrame"
              BindingContext="{x:Static vm:DesignTimeViewModels.DesignTimeCard}"
-             BorderColor="Black"
+             BorderColor="{Binding Source={x:Reference thisCardFrame}, Path=IsTappable, Converter={StaticResource TappableToBorderColor}}"
              CornerRadius="3"
              BackgroundColor="White"
              Padding="{Binding Rider, Converter={StaticResource RiderTypeToThickness}}"
              x:Class="FRCards.Views.CardFrame">
     <Frame.Resources>
         <ResourceDictionary>
+            <conv:TappableToBorderColorConverter x:Key="TappableToBorderColor" />
             <conv:CardToImageSourceConverter x:Key="CardToImageSource" />
             <conv:RiderTypeToThicknessConverter x:Key="RiderTypeToThickness" />
         </ResourceDictionary>

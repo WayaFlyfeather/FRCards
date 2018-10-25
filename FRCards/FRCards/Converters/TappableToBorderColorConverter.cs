@@ -1,5 +1,4 @@
-﻿using FRCards.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -7,16 +6,16 @@ using Xamarin.Forms;
 
 namespace FRCards.Converters
 {
-    public class RiderTypeToThicknessConverter : IValueConverter
+    public class TappableToBorderColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            RiderType rider = (RiderType)value;
+            bool isTappable = (bool)value;
 
-            if (rider == RiderType.Rouleur)
-                return new Thickness(6, 6, 4, 6);
+            if (isTappable)
+                return Color.Green;
             else
-                return new Thickness(4, 6, 6, 6);
+                return Color.Black;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

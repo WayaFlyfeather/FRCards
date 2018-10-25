@@ -31,29 +31,29 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout IsVisible="{Binding CanSelect}" Orientation="Horizontal">
-                <local:CardFrame BindingContext="{Binding SelectionCards[0]}" HorizontalOptions="CenterAndExpand">
+                <local:CardFrame BindingContext="{Binding SelectionCards[0]}" HorizontalOptions="CenterAndExpand" IsTappable="True">
                     <local:CardFrame.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="0" />
                     </local:CardFrame.GestureRecognizers>
                 </local:CardFrame>
-                <local:CardFrame BindingContext="{Binding SelectionCards[1]}" HorizontalOptions="CenterAndExpand">
+                <local:CardFrame BindingContext="{Binding SelectionCards[1]}" HorizontalOptions="CenterAndExpand" IsTappable="True">
                     <local:CardFrame.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="1" />
                     </local:CardFrame.GestureRecognizers>
                 </local:CardFrame>
-                <local:CardFrame BindingContext="{Binding SelectionCards[2]}" HorizontalOptions="CenterAndExpand">
+                <local:CardFrame BindingContext="{Binding SelectionCards[2]}" HorizontalOptions="CenterAndExpand" IsTappable="True">
                     <local:CardFrame.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="2" />
                     </local:CardFrame.GestureRecognizers>
                 </local:CardFrame>
             </StackLayout>
             <StackLayout IsVisible="{Binding HasSelectedCard}" Orientation="Horizontal">
-                <local:CardFrame BindingContext="{Binding SelectedCard}" HorizontalOptions="CenterAndExpand">
+                <local:CardFrame BindingContext="{Binding SelectedCard}" HorizontalOptions="CenterAndExpand" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}">
                     <local:CardFrame.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundCommand}" />
                     </local:CardFrame.GestureRecognizers>
                 </local:CardFrame>
-                <local:CardFrame BindingContext="{Binding DisplayExhaustionCard}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}">
+                <local:CardFrame BindingContext="{Binding DisplayExhaustionCard}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}">
                     <local:CardFrame.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundWithExhaustionCommand}" />
                     </local:CardFrame.GestureRecognizers>

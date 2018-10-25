@@ -12,6 +12,14 @@ namespace FRCards.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CardFrame : Frame
     {
+        public bool IsTappable
+        {
+            get => (bool)GetValue(IsTappableProperty);
+            set => SetValue(IsTappableProperty, value);
+        }
+
+        public static readonly BindableProperty IsTappableProperty = BindableProperty.Create(nameof(IsTappable), typeof(bool), typeof(CardFrame), false);
+
         public CardFrame()
         {
             InitializeComponent();
