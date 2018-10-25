@@ -31,41 +31,33 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout IsVisible="{Binding CanSelect}" Orientation="Horizontal">
-                <Image Source="{Binding SelectionCards[0], Converter={StaticResource CardToImageSource}}" HeightRequest="200" HorizontalOptions="CenterAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SelectCardCommand}" CommandParameter="0" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="{Binding SelectionCards[1], Converter={StaticResource CardToImageSource}}" HeightRequest="200" HorizontalOptions="CenterAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SelectCardCommand}" CommandParameter="1" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="{Binding SelectionCards[2], Converter={StaticResource CardToImageSource}}" HeightRequest="200" HorizontalOptions="CenterAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SelectCardCommand}" CommandParameter="2" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <!--<StackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="{Binding SelectionCards[1].Movement}" />
-                    <Button Text="Select" Command="{Binding SelectCardCommand}" CommandParameter="1" />
-                </StackLayout>
-                <StackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="{Binding SelectionCards[2].Movement}" />
-                    <Button Text="Select" Command="{Binding SelectCardCommand}" CommandParameter="2" />
-                </StackLayout>-->
+                <local:CardFrame BindingContext="{Binding SelectionCards[0]}" HorizontalOptions="CenterAndExpand">
+                    <local:CardFrame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="0" />
+                    </local:CardFrame.GestureRecognizers>
+                </local:CardFrame>
+                <local:CardFrame BindingContext="{Binding SelectionCards[1]}" HorizontalOptions="CenterAndExpand">
+                    <local:CardFrame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="1" />
+                    </local:CardFrame.GestureRecognizers>
+                </local:CardFrame>
+                <local:CardFrame BindingContext="{Binding SelectionCards[2]}" HorizontalOptions="CenterAndExpand">
+                    <local:CardFrame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="2" />
+                    </local:CardFrame.GestureRecognizers>
+                </local:CardFrame>
             </StackLayout>
-            <StackLayout IsVisible="{Binding HasSelectedCard}" HorizontalOptions="Center" Orientation="Horizontal">
-                <Image Source="{Binding SelectedCard, Converter={StaticResource CardToImageSource}}" HeightRequest="200" HorizontalOptions="CenterAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding FinishRoundCommand}" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="{Binding DisplayExhaustionCard, Converter={StaticResource CardToImageSource}}" HeightRequest="200" HorizontalOptions="CenterAndExpand" IsVisible="{Binding CanFinishRound}">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding FinishRoundWithExhaustionCommand}" />
-                    </Image.GestureRecognizers>
-                </Image>
+            <StackLayout IsVisible="{Binding HasSelectedCard}" Orientation="Horizontal">
+                <local:CardFrame BindingContext="{Binding SelectedCard}" HorizontalOptions="CenterAndExpand">
+                    <local:CardFrame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundCommand}" />
+                    </local:CardFrame.GestureRecognizers>
+                </local:CardFrame>
+                <local:CardFrame BindingContext="{Binding DisplayExhaustionCard}" HorizontalOptions="CenterAndExpand" IsVisible="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}">
+                    <local:CardFrame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundWithExhaustionCommand}" />
+                    </local:CardFrame.GestureRecognizers>
+                </local:CardFrame>
             </StackLayout>
         </StackLayout>
   </ContentView.Content>
