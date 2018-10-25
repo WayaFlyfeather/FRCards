@@ -21,15 +21,15 @@ namespace FRCards.Converters
             if (card.Rider==RiderType.Rouleur)
             {
                 if (card.IsExhaustion)
-                    return ImageSource.FromResource("FRCards.Assets.RExh.png", thisAssembly);
+                    return ImageSource.FromResource("FRCards.Assets.RExh_200h.png", thisAssembly);
 
                 switch (card.Movement)
                 {
-                    case 3: return ImageSource.FromResource("FRCards.Assets.R3.png", thisAssembly);
-                    case 4: return ImageSource.FromResource("FRCards.Assets.R4.png", thisAssembly);
-                    case 5: return ImageSource.FromResource("FRCards.Assets.R5.png", thisAssembly);
-                    case 6: return ImageSource.FromResource("FRCards.Assets.R6.png", thisAssembly);
-                    case 7: return ImageSource.FromResource("FRCards.Assets.R7.png", thisAssembly);
+                    case 3: return ImageSource.FromResource("FRCards.Assets.R3_200h.png", thisAssembly);
+                    case 4: return ImageSource.FromResource("FRCards.Assets.R4_200h.png", thisAssembly);
+                    case 5: return ImageSource.FromResource("FRCards.Assets.R5_200h.png", thisAssembly);
+                    case 6: return ImageSource.FromResource("FRCards.Assets.R6_200h.png", thisAssembly);
+                    case 7: return ImageSource.FromResource("FRCards.Assets.R7_200h.png", thisAssembly);
                 }
             }
 

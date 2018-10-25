@@ -10,13 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\R3.png" />
-    <None Remove="Assets\R4.png" />
-    <None Remove="Assets\R5.png" />
-    <None Remove="Assets\R6.png" />
-    <None Remove="Assets\R7.png" />
-    <None Remove="Assets\RBack.png" />
-    <None Remove="Assets\RExh.png" />
+    <None Remove="Assets\R3_200h.png" />
+    <None Remove="Assets\R4_200h.png" />
+    <None Remove="Assets\R5_200h.png" />
+    <None Remove="Assets\R6_200h.png" />
+    <None Remove="Assets\R7_200h.png" />
+    <None Remove="Assets\RBack_200h.png" />
+    <None Remove="Assets\RExh_200h.png" />
     <None Remove="Assets\S2.png" />
     <None Remove="Assets\S3.png" />
     <None Remove="Assets\S4.png" />
@@ -27,13 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\R3.png" />
-    <EmbeddedResource Include="Assets\R4.png" />
-    <EmbeddedResource Include="Assets\R5.png" />
-    <EmbeddedResource Include="Assets\R6.png" />
-    <EmbeddedResource Include="Assets\R7.png" />
-    <EmbeddedResource Include="Assets\RBack.png" />
-    <EmbeddedResource Include="Assets\RExh.png" />
+    <EmbeddedResource Include="Assets\R3_200h.png" />
+    <EmbeddedResource Include="Assets\R4_200h.png" />
+    <EmbeddedResource Include="Assets\R5_200h.png" />
+    <EmbeddedResource Include="Assets\R6_200h.png" />
+    <EmbeddedResource Include="Assets\R7_200h.png" />
+    <EmbeddedResource Include="Assets\RBack_200h.png" />
+    <EmbeddedResource Include="Assets\RExh_200h.png" />
     <EmbeddedResource Include="Assets\S2.png" />
     <EmbeddedResource Include="Assets\S3.png" />
     <EmbeddedResource Include="Assets\S4.png" />
