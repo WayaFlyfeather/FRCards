@@ -8,7 +8,7 @@
              BorderColor="{Binding Source={x:Reference thisCardFrame}, Path=IsTappable, Converter={StaticResource TappableToBorderColor}}"
              CornerRadius="3"
              BackgroundColor="White"
-             Padding="{Binding Rider, Converter={StaticResource RiderTypeToThickness}}"
+             Padding="{Binding Rider, Converter={StaticResource RiderTypeToThickness}, FallbackValue='6'}"
              HorizontalOptions="Center"
              x:Class="FRCards.Views.CardFrame">
     <Frame.Resources>

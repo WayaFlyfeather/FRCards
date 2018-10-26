@@ -11,6 +11,9 @@ namespace FRCards.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value==null)
+                return new Thickness(6, 6, 6, 6);
+
             RiderType rider = (RiderType)value;
 
             if (rider == RiderType.Rouleur)
