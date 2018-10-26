@@ -12,16 +12,17 @@ namespace FRCards.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Assembly thisAssembly = GetType().Assembly;
+
             Card card = value as Card;
 
-            if (card == null)
-                return null;
+            if (card == null)  //Todo: replace with empty card image.
+                return ImageSource.FromResource("FRCards.Assets.RBack_200h.png", thisAssembly);
 
             bool faceUp = true;
             if (parameter != null)
                 faceUp = System.Convert.ToBoolean(parameter);
 
-            Assembly thisAssembly = GetType().Assembly;
             if (card.Rider==RiderType.Rouleur)
             {
                 if (!faceUp)
