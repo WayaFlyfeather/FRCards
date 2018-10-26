@@ -15,12 +15,23 @@ namespace FRCards.ViewModels
             set => SetProperty(ref model, value);
         }
 
+        public Card TopCard => model.Cards.Peek();
+
+
+        private bool isFaceUp;
+        public bool IsFaceUp
+        {
+            get => isFaceUp;
+            set => SetProperty(ref isFaceUp, value);
+        }
+
         public DeckViewModel()
         {
             model = new Deck()
             {
                 Cards = new Stack<Card>()
             };
+            isFaceUp = false;
         }
 
         public int CardCount => Model.Cards.Count;
