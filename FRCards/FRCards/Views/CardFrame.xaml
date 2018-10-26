@@ -9,6 +9,7 @@
              CornerRadius="3"
              BackgroundColor="White"
              Padding="{Binding Rider, Converter={StaticResource RiderTypeToThickness}}"
+             HorizontalOptions="Center"
              x:Class="FRCards.Views.CardFrame">
     <Frame.Resources>
         <ResourceDictionary>

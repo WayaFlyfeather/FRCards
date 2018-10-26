@@ -19,9 +19,9 @@ namespace FRCards.ViewModels
 
         public SprinteurDeckSetViewModel() : base()
         {
-            UsedCards = new DeckViewModel();
-            ActiveDeck = new DeckViewModel();
-            Discarded = new DeckViewModel();
+            UsedCards = new DeckViewModel() { IsFaceUp = true };
+            ActiveDeck = new DeckViewModel() { IsFaceUp = false };
+            Discarded = new DeckViewModel() { IsFaceUp = true };
             SelectionCards = null;
             SelectedCard = null;
 

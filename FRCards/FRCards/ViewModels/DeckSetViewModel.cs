@@ -128,9 +128,10 @@ namespace FRCards.ViewModels
 
         public void MakeUsedDeckActive()
         {
+            UsedCards.IsFaceUp = false;
             UsedCards.Shuffle();
             ActiveDeck = UsedCards;
-            UsedCards = new DeckViewModel();
+            UsedCards = new DeckViewModel() { IsFaceUp = true };
         }
 
         public bool HasSelectedCard => SelectedCard != null;

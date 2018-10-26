@@ -15,7 +15,7 @@ namespace FRCards.ViewModels
             set => SetProperty(ref model, value);
         }
 
-        public Card TopCard => model.Cards.Peek();
+        public Card TopCard => CardCount > 0 ? model.Cards.Peek() : null;
 
 
         private bool isFaceUp;
@@ -52,6 +52,7 @@ namespace FRCards.ViewModels
             }
 
             model.Cards = newStack;
+            OnPropertyChanged(nameof(TopCard));
         }
 
         public Card DrawTopCard()
@@ -61,6 +62,7 @@ namespace FRCards.ViewModels
                 Card drawnCard = Model.Cards.Pop();
                 OnPropertyChanged(nameof(CardCount));
                 OnPropertyChanged(nameof(HasCards));
+                OnPropertyChanged(nameof(TopCard));
 
                 return drawnCard;
             }
@@ -73,6 +75,7 @@ namespace FRCards.ViewModels
             Model.Cards.Push(card);
             OnPropertyChanged(nameof(CardCount));
             OnPropertyChanged(nameof(HasCards));
+            OnPropertyChanged(nameof(TopCard));
         }
     }
 }

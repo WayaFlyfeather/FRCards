@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Frame xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FRCards.Views"
              xmlns:conv="clr-namespace:FRCards.Converters"
              xmlns:vm="clr-namespace:FRCards.ViewModels"
-             x:Name="thisCardFrame"
+             x:Name="thisDeckFrame"
              BindingContext="{x:Static vm:DesignTimeViewModels.DesignTimeDeck}"       
+             HorizontalOptions="Center"
              x:Class="FRCards.Views.DeckFrame">
   <Frame.Content>
+    <local:CardFrame BindingContext="{Binding TopCard}" IsFaceUp="{Binding Source={x:Reference thisDeckFrame}, Path=BindingContext.IsFaceUp}" IsTappable="{Binding Source={x:Reference thisDeckFrame}, Path=IsTappable}" />
   </Frame.Content>
 </Frame>
