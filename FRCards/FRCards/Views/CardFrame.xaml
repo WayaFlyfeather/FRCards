@@ -15,9 +15,13 @@
             <conv:TappableToBorderColorConverter x:Key="TappableToBorderColor" />
             <conv:CardToImageSourceConverter x:Key="CardToImageSource" />
             <conv:RiderTypeToThicknessConverter x:Key="RiderTypeToThickness" />
+            <conv:BooleanNegationConverter x:Key="BooleanNegation" />
         </ResourceDictionary>
     </Frame.Resources>
     <Frame.Content>
-        <Image Source="{Binding Converter={StaticResource CardToImageSource}}" HeightRequest="200" />
+        <Grid>
+            <Image Source="{Binding Converter={StaticResource CardToImageSource}}" HeightRequest="200" IsVisible="{Binding Source={x:Reference thisCardFrame}, Path=IsFaceUp}" />
+            <Image Source="{Binding Converter={StaticResource CardToImageSource}, ConverterParameter='False'}" HeightRequest="200" IsVisible="{Binding Source={x:Reference thisCardFrame}, Path=IsFaceUp, Converter={StaticResource BooleanNegation}}" />
+        </Grid>
     </Frame.Content>
 </Frame>

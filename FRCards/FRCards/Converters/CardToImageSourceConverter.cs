@@ -17,9 +17,16 @@ namespace FRCards.Converters
             if (card == null)
                 return null;
 
+            bool faceUp = true;
+            if (parameter != null)
+                faceUp = System.Convert.ToBoolean(parameter);
+
             Assembly thisAssembly = GetType().Assembly;
             if (card.Rider==RiderType.Rouleur)
             {
+                if (!faceUp)
+                    return ImageSource.FromResource("FRCards.Assets.RBack_200h.png", thisAssembly);
+
                 if (card.IsExhaustion)
                     return ImageSource.FromResource("FRCards.Assets.RExh_200h.png", thisAssembly);
 
@@ -35,6 +42,9 @@ namespace FRCards.Converters
 
             if (card.Rider == RiderType.Sprinteur)
             {
+                if (!faceUp)
+                    return ImageSource.FromResource("FRCards.Assets.SBack_200h.png", thisAssembly);
+
                 if (card.IsExhaustion)
                     return ImageSource.FromResource("FRCards.Assets.SExh_200h.png", thisAssembly);
 

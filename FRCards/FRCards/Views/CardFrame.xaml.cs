@@ -17,8 +17,14 @@ namespace FRCards.Views
             get => (bool)GetValue(IsTappableProperty);
             set => SetValue(IsTappableProperty, value);
         }
-
         public static readonly BindableProperty IsTappableProperty = BindableProperty.Create(nameof(IsTappable), typeof(bool), typeof(CardFrame), false);
+
+        public bool IsFaceUp
+        {
+            get => (bool)GetValue(IsFaceUpProperty);
+            set => SetValue(IsFaceUpProperty, value);
+        }
+        public static readonly BindableProperty IsFaceUpProperty = BindableProperty.Create(nameof(IsFaceUp), typeof(bool), typeof(CardFrame), true);
 
         public CardFrame()
         {
