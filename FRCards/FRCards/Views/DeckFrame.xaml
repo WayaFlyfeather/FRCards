@@ -10,9 +10,7 @@
              HorizontalOptions="Center"
              x:Class="FRCards.Views.DeckFrame">
     <Frame.Content>
-        <Grid x:Name="deckGrid" Padding="20" HorizontalOptions="Center">
-            <Frame HeightRequest="214" WidthRequest="94" HorizontalOptions="Center" BackgroundColor="Black" CornerRadius="3" TranslationX="{Binding CardCount}" TranslationY="{Binding CardCount}" />
-            <local:CardFrame x:Name="topCard" BindingContext="{Binding TopCard}" IsFaceUp="{Binding Source={x:Reference thisDeckFrame}, Path=BindingContext.IsFaceUp}" IsTappable="{Binding Source={x:Reference thisDeckFrame}, Path=IsTappable}" />
-        </Grid>
+        <!--Grid Children set in codebehind.-->
+        <Grid x:Name="deckGrid" Padding="20" HorizontalOptions="Center" />
     </Frame.Content>
 </Frame>
