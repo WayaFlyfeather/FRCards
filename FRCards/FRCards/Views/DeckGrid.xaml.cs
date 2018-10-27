@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace FRCards.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DeckFrame : Frame
+	public partial class DeckGrid : Grid
 	{
         DeckViewModel ViewModel => BindingContext as DeckViewModel;
         DeckViewModel prevViewModel = null;
@@ -21,9 +21,9 @@ namespace FRCards.Views
             get => (bool)GetValue(IsTappableProperty);
             set => SetValue(IsTappableProperty, value);
         }
-        public static readonly BindableProperty IsTappableProperty = BindableProperty.Create(nameof(IsTappable), typeof(bool), typeof(DeckFrame), false);
+        public static readonly BindableProperty IsTappableProperty = BindableProperty.Create(nameof(IsTappable), typeof(bool), typeof(DeckGrid), false);
 
-        public DeckFrame ()
+        public DeckGrid ()
 		{
 			InitializeComponent ();
             OnBindingContextChanged();
@@ -52,10 +52,10 @@ namespace FRCards.Views
             if (ViewModel is null)
                 return;
 
-            deckGrid.Children.Clear();
+            Children.Clear();
             for (int deckCard=ViewModel.CardCount; deckCard > 0; deckCard--)
             {
-                deckGrid.Children.Add(new Frame()
+                Children.Add(new Frame()
                 {
                     BorderColor = Color.Black,
                     HeightRequest = 214,
@@ -74,7 +74,7 @@ namespace FRCards.Views
             };
             topCardFrame.SetBinding(CardFrame.IsTappableProperty, new Binding("IsTappable", source: this));
             topCardFrame.SetBinding(CardFrame.IsFaceUpProperty, new Binding("BindingContext.IsFaceUp", source: this));
-            deckGrid.Children.Add(topCardFrame);
+            Children.Add(topCardFrame);
         }
 	}
 }

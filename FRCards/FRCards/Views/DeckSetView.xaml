@@ -16,13 +16,13 @@
         <StackLayout>
             <Label BindingContext="{x:Reference thisDeckSetView}" Text="{Binding Rider}" FontSize="Large" HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal">
-                <local:DeckFrame BindingContext="{Binding ActiveDeck}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanDrawCards}">
-                    <local:DeckFrame.GestureRecognizers>
+                <local:DeckGrid BindingContext="{Binding ActiveDeck}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanDrawCards}">
+                    <local:DeckGrid.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.DrawCardsCommand}"/>
-                    </local:DeckFrame.GestureRecognizers>
-                </local:DeckFrame>
-                <local:DeckFrame BindingContext="{Binding UsedCards}" IsTappable="False" />
-                <local:DeckFrame BindingContext="{Binding Discarded}" IsTappable="False" />
+                    </local:DeckGrid.GestureRecognizers>
+                </local:DeckGrid>
+                <local:DeckGrid BindingContext="{Binding UsedCards}" IsTappable="False" />
+                <local:DeckGrid BindingContext="{Binding Discarded}" IsTappable="False" />
             </StackLayout>
             <StackLayout IsVisible="{Binding CanSelect}" Orientation="Horizontal">
                 <local:CardFrame BindingContext="{Binding SelectionCards[0]}" IsTappable="True">

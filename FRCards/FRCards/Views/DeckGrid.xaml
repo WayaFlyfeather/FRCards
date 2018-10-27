@@ -1,16 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FRCards.Views"
              xmlns:conv="clr-namespace:FRCards.Converters"
              xmlns:vm="clr-namespace:FRCards.ViewModels"
-             x:Name="thisDeckFrame"
-             CornerRadius="3"
+             Padding="20"
              BindingContext="{x:Static vm:DesignTimeViewModels.DesignTimeDeck}"       
              HorizontalOptions="Center"
-             x:Class="FRCards.Views.DeckFrame">
-    <Frame.Content>
+             x:Class="FRCards.Views.DeckGrid">
         <!--Grid Children set in codebehind.-->
-        <Grid x:Name="deckGrid" Padding="20" HorizontalOptions="Center" />
-    </Frame.Content>
-</Frame>
+</Grid>
