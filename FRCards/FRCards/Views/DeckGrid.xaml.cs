@@ -57,20 +57,20 @@ namespace FRCards.Views
             {
                 Children.Add(new Frame()
                 {
-                    BorderColor = Color.Black,
+                    BorderColor = deckCard % 2 == 1 ? Color.DarkGray : Color.Black,
                     HeightRequest = 214,
                     WidthRequest = 94,
                     HorizontalOptions = LayoutOptions.Center,
                     BackgroundColor = Color.White,
-                    TranslationX = (ViewModel.CardCount - deckCard) * -2,
-                    TranslationY = (ViewModel.CardCount - deckCard) * -2,
+                    TranslationX = deckCard - ViewModel.CardCount,
+                    TranslationY = deckCard - ViewModel.CardCount
                 });                    
             }
             CardFrame topCardFrame = new CardFrame()
             {
                 BindingContext = ViewModel.TopCard,
-                TranslationX = ViewModel.CardCount * -2,
-                TranslationY = ViewModel.CardCount * -2,
+                TranslationX = -ViewModel.CardCount,
+                TranslationY = -ViewModel.CardCount,
             };
             topCardFrame.SetBinding(CardFrame.IsTappableProperty, new Binding("IsTappable", source: this));
             topCardFrame.SetBinding(CardFrame.IsFaceUpProperty, new Binding("BindingContext.IsFaceUp", source: this));
