@@ -17,7 +17,7 @@ namespace FRCards.Converters
             Card card = value as Card;
 
             if (card == null)  //Todo: replace with empty card image.
-                return ImageSource.FromResource("FRCards.Assets.RBack_200h.png", thisAssembly);
+                return ImageSource.FromResource("FRCards.Assets.Blank_200h.png", thisAssembly);
 
             bool faceUp = true;
             if (parameter != null)
