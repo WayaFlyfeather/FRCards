@@ -50,13 +50,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\CardView.xaml.cs">
+      <DependentUpon>CardView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\DeckGrid.xaml.cs">
       <DependentUpon>DeckGrid.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\CardFrame.xaml">
+    <EmbeddedResource Update="Views\CardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DeckGrid.xaml">

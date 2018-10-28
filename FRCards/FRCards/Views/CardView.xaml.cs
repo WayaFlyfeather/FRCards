@@ -10,23 +10,23 @@ using Xamarin.Forms.Xaml;
 namespace FRCards.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CardFrame : Frame
+    public partial class CardView : ContentView
     {
         public bool IsTappable
         {
             get => (bool)GetValue(IsTappableProperty);
             set => SetValue(IsTappableProperty, value);
         }
-        public static readonly BindableProperty IsTappableProperty = BindableProperty.Create(nameof(IsTappable), typeof(bool), typeof(CardFrame), false);
+        public static readonly BindableProperty IsTappableProperty = BindableProperty.Create(nameof(IsTappable), typeof(bool), typeof(CardView), false);
 
         public bool IsFaceUp
         {
             get => (bool)GetValue(IsFaceUpProperty);
             set => SetValue(IsFaceUpProperty, value);
         }
-        public static readonly BindableProperty IsFaceUpProperty = BindableProperty.Create(nameof(IsFaceUp), typeof(bool), typeof(CardFrame), true);
+        public static readonly BindableProperty IsFaceUpProperty = BindableProperty.Create(nameof(IsFaceUp), typeof(bool), typeof(CardView), true);
 
-        public CardFrame()
+        public CardView()
         {
             InitializeComponent();
         }

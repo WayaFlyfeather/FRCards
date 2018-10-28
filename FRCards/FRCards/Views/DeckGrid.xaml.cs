@@ -68,15 +68,15 @@ namespace FRCards.Views
                     TranslationY = deckCard - ViewModel.CardCount
                 });                    
             }
-            CardFrame topCardFrame = new CardFrame()
+            CardView topCardView = new CardView()
             {
                 BindingContext = ViewModel.TopCard,
                 TranslationX = -ViewModel.CardCount,
                 TranslationY = -ViewModel.CardCount,
             };
-            topCardFrame.SetBinding(CardFrame.IsTappableProperty, new Binding("IsTappable", source: this));
-            topCardFrame.SetBinding(CardFrame.IsFaceUpProperty, new Binding("BindingContext.IsFaceUp", source: this));
-            Children.Add(topCardFrame);
+            topCardView.SetBinding(CardView.IsTappableProperty, new Binding("IsTappable", source: this));
+            topCardView.SetBinding(CardView.IsFaceUpProperty, new Binding("BindingContext.IsFaceUp", source: this));
+            Children.Add(topCardView);
         }
 	}
 }
