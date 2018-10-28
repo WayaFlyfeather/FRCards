@@ -58,9 +58,11 @@ namespace FRCards.Views
                 Children.Add(new Frame()
                 {
                     BorderColor = deckCard % 2 == 1 ? Color.DarkGray : Color.Black,
-                    HeightRequest = 214,
-                    WidthRequest = 94,
+                    HeightRequest = 200,
+                    WidthRequest = 125,
                     HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
+                    Padding = new Thickness(6),
                     BackgroundColor = Color.White,
                     TranslationX = deckCard - ViewModel.CardCount,
                     TranslationY = deckCard - ViewModel.CardCount

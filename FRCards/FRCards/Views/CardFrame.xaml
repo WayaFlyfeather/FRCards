@@ -10,6 +10,7 @@
              BackgroundColor="White"
              Padding="{Binding Rider, Converter={StaticResource RiderTypeToThickness}, FallbackValue='6'}"
              HorizontalOptions="Center"
+             VerticalOptions="Center"
              x:Class="FRCards.Views.CardFrame">
     <Frame.Resources>
         <ResourceDictionary>
