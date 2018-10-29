@@ -30,5 +30,29 @@ namespace FRCards.Views
         {
             InitializeComponent();
         }
+
+        public Task<bool> AnimateMove(double moveX, double moveY)
+        {
+            cardFrame.TranslationX = -moveX;
+            cardFrame.TranslationY = -moveY;
+            return cardFrame.TranslateTo(0.0, 0.0);
+        }
+
+        public async Task<bool> AnimateFlipAndMove(double moveX, double moveY)
+        {
+            Task moveTask = AnimateMove(moveX, moveY);
+
+            await cardFrame.RotateYTo(90.0, 125);
+
+            IsFaceUp = !IsFaceUp;
+            cardFrame.RotationY = 270;
+
+            await cardFrame.RotateYTo(360.0, 125);
+
+            cardFrame.RotationY = 0;
+            await moveTask;
+
+            return true;
+        }
     }
 }
