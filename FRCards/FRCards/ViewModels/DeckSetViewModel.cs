@@ -1,6 +1,7 @@
 ﻿using FRCards.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -74,6 +75,7 @@ namespace FRCards.ViewModels
             get => selectionCards;
             set
             {
+                Debug.WriteLine("Setting SelectionCards");
                 if (SetProperty(ref selectionCards, value))
                 {
                     OnPropertyChanged(nameof(CanSelect));
