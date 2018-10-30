@@ -37,8 +37,8 @@ namespace FRCards.ViewModels
             set => SetProperty(ref discarded, value);
         }
 
-        readonly Card displayExhaustionCard;
-        public Card DisplayExhaustionCard => displayExhaustionCard; 
+        readonly CardViewModel displayExhaustionCard;
+        public CardViewModel DisplayExhaustionCard => displayExhaustionCard; 
 
         private bool canDrawCards;
         public bool CanDrawCards
@@ -69,13 +69,12 @@ namespace FRCards.ViewModels
 
         public bool CanSelect => selectionCards != null;
 
-        private Card[] selectionCards;
-        public Card[] SelectionCards
+        private CardViewModel[] selectionCards;
+        public CardViewModel[] SelectionCards
         {
             get => selectionCards;
             set
             {
-                Debug.WriteLine("Setting SelectionCards");
                 if (SetProperty(ref selectionCards, value))
                 {
                     OnPropertyChanged(nameof(CanSelect));
@@ -84,8 +83,8 @@ namespace FRCards.ViewModels
             }
         }
 
-        private Card selectedCard;
-        public Card SelectedCard
+        private CardViewModel selectedCard;
+        public CardViewModel SelectedCard
         {
             get => selectedCard;
             set
@@ -99,7 +98,7 @@ namespace FRCards.ViewModels
 
         public void DrawSelectionCards()
         {
-            Card[] newSelectionCards = new Card[3];
+            CardViewModel[] newSelectionCards = new CardViewModel[3];
             
             for (int idx=0; idx < 3; idx++)
             {
@@ -157,7 +156,7 @@ namespace FRCards.ViewModels
             UsedCards.AddCard(GetExhaustionCard());
         }
 
-        public abstract Card GetExhaustionCard();
+        public abstract CardViewModel GetExhaustionCard();
 
         private Command drawCardsCommand;
         public ICommand DrawCardsCommand => drawCardsCommand ?? (drawCardsCommand = new Command(DrawSelectionCards, () => CanDrawCards));

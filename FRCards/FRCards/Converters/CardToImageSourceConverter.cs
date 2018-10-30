@@ -1,4 +1,5 @@
 ﻿using FRCards.Models;
+using FRCards.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,24 +15,24 @@ namespace FRCards.Converters
         {
             Assembly thisAssembly = GetType().Assembly;
 
-            Card card = value as Card;
+            CardViewModel card = value as CardViewModel;
 
-            if (card == null)  //Todo: replace with empty card image.
+            if (card == null) 
                 return ImageSource.FromResource("FRCards.Assets.Blank_200h.png", thisAssembly);
 
             bool faceUp = true;
             if (parameter != null)
                 faceUp = System.Convert.ToBoolean(parameter);
 
-            if (card.Rider==RiderType.Rouleur)
+            if (card.Model.Rider==RiderType.Rouleur)
             {
                 if (!faceUp)
                     return ImageSource.FromResource("FRCards.Assets.RBack_200h.png", thisAssembly);
 
-                if (card.IsExhaustion)
+                if (card.Model.IsExhaustion)
                     return ImageSource.FromResource("FRCards.Assets.RExh_200h.png", thisAssembly);
 
-                switch (card.Movement)
+                switch (card.Model.Movement)
                 {
                     case 3: return ImageSource.FromResource("FRCards.Assets.R3_200h.png", thisAssembly);
                     case 4: return ImageSource.FromResource("FRCards.Assets.R4_200h.png", thisAssembly);
@@ -41,15 +42,15 @@ namespace FRCards.Converters
                 }
             }
 
-            if (card.Rider == RiderType.Sprinteur)
+            if (card.Model.Rider == RiderType.Sprinteur)
             {
                 if (!faceUp)
                     return ImageSource.FromResource("FRCards.Assets.SBack_200h.png", thisAssembly);
 
-                if (card.IsExhaustion)
+                if (card.Model.IsExhaustion)
                     return ImageSource.FromResource("FRCards.Assets.SExh_200h.png", thisAssembly);
 
-                switch (card.Movement)
+                switch (card.Model.Movement)
                 {
                     case 2: return ImageSource.FromResource("FRCards.Assets.S2_200h.png", thisAssembly);
                     case 3: return ImageSource.FromResource("FRCards.Assets.S3_200h.png", thisAssembly);

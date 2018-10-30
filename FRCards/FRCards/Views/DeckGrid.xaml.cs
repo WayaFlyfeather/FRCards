@@ -70,10 +70,10 @@ namespace FRCards.Views
             }
             CardView topCardView = new CardView()
             {
-                BindingContext = ViewModel.TopCard,
                 TranslationX = -ViewModel.CardCount,
                 TranslationY = -ViewModel.CardCount,
             };
+            topCardView.SetBinding(CardView.BindingContextProperty, "TopCard");
             topCardView.SetBinding(CardView.IsTappableProperty, new Binding("IsTappable", source: this));
             topCardView.SetBinding(CardView.IsFaceUpProperty, new Binding("BindingContext.IsFaceUp", source: this));
             Children.Add(topCardView);

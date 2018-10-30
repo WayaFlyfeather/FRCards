@@ -7,14 +7,14 @@ namespace FRCards.ViewModels
 {
     public class SprinteurDeckSetViewModel : DeckSetViewModel
     {
-        public override Card GetExhaustionCard()
+        public override CardViewModel GetExhaustionCard()
         {
-            return new Card()
+            return new CardViewModel(new Card()
             {
                 Movement = 2,
                 Rider = RiderType.Sprinteur,
                 IsExhaustion = true
-            };
+            });
         }
 
         public SprinteurDeckSetViewModel() : base()

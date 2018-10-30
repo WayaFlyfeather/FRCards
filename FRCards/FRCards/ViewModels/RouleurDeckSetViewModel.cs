@@ -7,14 +7,14 @@ namespace FRCards.ViewModels
 {
     public class RouleurDeckSetViewModel : DeckSetViewModel
     {
-        public override Card GetExhaustionCard()
+        public override CardViewModel GetExhaustionCard()
         {
-            return new Card()
+            return new CardViewModel(new Card()
             {
                 Movement = 2,
                 Rider = RiderType.Rouleur,
                 IsExhaustion = true
-            };
+            });
         }
 
         public RouleurDeckSetViewModel() : base()

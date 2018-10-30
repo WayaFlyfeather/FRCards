@@ -15,8 +15,12 @@ namespace FRCards.ViewModels
             set => SetProperty(ref model, value);
         }
 
-        public Card TopCard => CardCount > 0 ? model.Cards.Peek() : null;
-
+        public CardViewModel topCard = null;
+        public CardViewModel TopCard
+        {
+            get => topCard;
+            set => SetProperty(ref topCard, value);
+        }
 
         private bool isFaceUp;
         public bool IsFaceUp
@@ -25,13 +29,22 @@ namespace FRCards.ViewModels
             set => SetProperty(ref isFaceUp, value);
         }
 
-        public DeckViewModel()
+        private bool isDiscarded;
+        public bool IsDiscarded
+        {
+            get => isDiscarded;
+            set => SetProperty(ref isDiscarded, value);
+        }
+
+        public DeckViewModel(bool isDiscarded=false)
         {
             model = new Deck()
             {
                 Cards = new Stack<Card>()
             };
             isFaceUp = false;
+            this.isDiscarded = isDiscarded;
+            setTopCard();
         }
 
         public int CardCount => Model.Cards.Count;
@@ -52,30 +65,45 @@ namespace FRCards.ViewModels
             }
 
             model.Cards = newStack;
-            OnPropertyChanged(nameof(TopCard));
+            setTopCard();
         }
 
-        public Card DrawTopCard()
+        private void setTopCard()
         {
             if (HasCards)
-            {
-                Card drawnCard = Model.Cards.Pop();
-                OnPropertyChanged(nameof(CardCount));
-                OnPropertyChanged(nameof(HasCards));
-                OnPropertyChanged(nameof(TopCard));
+                TopCard = new CardViewModel(model.Cards.Peek(), IsDiscarded);
+            else
+                TopCard = null;
+        }
 
-                return drawnCard;
+        public CardViewModel DrawTopCard()
+        {
+            CardViewModel retCard = TopCard;
+            if (HasCards)
+            {
+                Model.Cards.Pop();
+                setTopCard();
+                OnPropertyChanged(nameof(CardCount));
+                if (!HasCards)
+                    OnPropertyChanged(nameof(HasCards));
             }
 
-            return null; // throw exception?
+            return retCard;
+        }
+
+        public void AddCard(CardViewModel Card)
+        {
+            AddCard(Card.Model);
         }
 
         public void AddCard(Card card)
         {
+            bool prevHasCards = HasCards;
             Model.Cards.Push(card);
+            setTopCard();
             OnPropertyChanged(nameof(CardCount));
-            OnPropertyChanged(nameof(HasCards));
-            OnPropertyChanged(nameof(TopCard));
+            if (prevHasCards != HasCards)
+                OnPropertyChanged(nameof(HasCards));
         }
     }
 }

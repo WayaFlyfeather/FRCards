@@ -10,8 +10,8 @@ namespace FRCards.ViewModels
         static RouleurDeckSetViewModel designRouleurDeckSetViewModel = null;
         public static RouleurDeckSetViewModel DesignRouleurDeckSetViewModel => designRouleurDeckSetViewModel ?? (designRouleurDeckSetViewModel = new RouleurDeckSetViewModel());
 
-        static Card designTimeCard = null;
-        public static Card DesignTimeCard => designTimeCard ?? (designTimeCard=new Card() { Movement = 3, IsExhaustion = false, Rider = RiderType.Rouleur } );
+        static CardViewModel designTimeCard = null;
+        public static CardViewModel DesignTimeCard => designTimeCard ?? (designTimeCard=new CardViewModel(new Card() { Movement = 3, IsExhaustion = false, Rider = RiderType.Rouleur }) );
 
         static DeckViewModel designTimeDeck = null;
         public static DeckViewModel DesignTimeDeck => designTimeDeck ?? (designTimeDeck = new DeckViewModel() { Model = makeDesignTimeDeck() });
