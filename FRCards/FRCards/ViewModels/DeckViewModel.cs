@@ -91,9 +91,14 @@ namespace FRCards.ViewModels
             return retCard;
         }
 
-        public void AddCard(CardViewModel Card)
+        public void AddCard(CardViewModel card)
         {
-            AddCard(Card.Model);
+            bool prevHasCards = HasCards;
+            Model.Cards.Push(card.Model);
+            TopCard = card;
+            OnPropertyChanged(nameof(CardCount));
+            if (prevHasCards != HasCards)
+                OnPropertyChanged(nameof(HasCards));
         }
 
         public void AddCard(Card card)
