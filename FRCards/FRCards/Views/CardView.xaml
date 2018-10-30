@@ -21,10 +21,11 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <Frame x:Name="cardFrame" IsVisible="{Binding Source={x:Reference thisCardView}, Path=IsVisibleWithoutAnimation}" Padding="{Binding Model.Rider, Converter={StaticResource RiderTypeToThickness}, FallbackValue='6'}" BackgroundColor="White" BorderColor="{Binding Source={x:Reference thisCardView}, Path=IsTappable, Converter={StaticResource TappableToBorderColor}}" CornerRadius="3"> 
+        <Frame x:Name="cardFrame" IsVisible="{Binding Source={x:Reference thisCardView}, Path=IsVisibleWithoutAnimation}" Padding="{Binding Model.Rider, Converter={StaticResource RiderTypeToThickness}, FallbackValue='6'}" BorderColor="{Binding Source={x:Reference thisCardView}, Path=IsTappable, Converter={StaticResource TappableToBorderColor}}" CornerRadius="3"> 
             <Grid>
                 <Image Source="{Binding Converter={StaticResource CardToImageSource}}" HeightRequest="200" IsVisible="{Binding Source={x:Reference thisCardView}, Path=IsFaceUp}" />
                 <Image Source="{Binding Converter={StaticResource CardToImageSource}, ConverterParameter='False'}" HeightRequest="200" IsVisible="{Binding Source={x:Reference thisCardView}, Path=IsFaceUp, Converter={StaticResource BooleanNegation}}" />
+                <Frame BackgroundColor="#80808080" IsVisible="{Binding IsDiscarded}" CornerRadius="3" />
             </Grid>
         </Frame>
     </ContentView.Content>

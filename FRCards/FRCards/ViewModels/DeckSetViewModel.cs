@@ -63,6 +63,10 @@ namespace FRCards.ViewModels
                 {
                     finishRoundCommand?.ChangeCanExecute();
                     finishRoundWithExhaustionCommand?.ChangeCanExecute();
+                    if (value)
+                    {
+                        SelectedCard.IsDiscarded = true;
+                    }
                 }
             }
         }
