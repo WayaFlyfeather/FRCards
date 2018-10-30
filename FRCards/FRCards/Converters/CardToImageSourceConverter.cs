@@ -15,7 +15,7 @@ namespace FRCards.Converters
         {
             Assembly thisAssembly = GetType().Assembly;
 
-            CardViewModel card = value as CardViewModel;
+            Card card = value as Card;
 
             if (card == null) 
                 return ImageSource.FromResource("FRCards.Assets.Blank_200h.png", thisAssembly);
@@ -24,15 +24,15 @@ namespace FRCards.Converters
             if (parameter != null)
                 faceUp = System.Convert.ToBoolean(parameter);
 
-            if (card.Model.Rider==RiderType.Rouleur)
+            if (card.Rider==RiderType.Rouleur)
             {
                 if (!faceUp)
                     return ImageSource.FromResource("FRCards.Assets.RBack_200h.png", thisAssembly);
 
-                if (card.Model.IsExhaustion)
+                if (card.IsExhaustion)
                     return ImageSource.FromResource("FRCards.Assets.RExh_200h.png", thisAssembly);
 
-                switch (card.Model.Movement)
+                switch (card.Movement)
                 {
                     case 3: return ImageSource.FromResource("FRCards.Assets.R3_200h.png", thisAssembly);
                     case 4: return ImageSource.FromResource("FRCards.Assets.R4_200h.png", thisAssembly);
@@ -42,15 +42,15 @@ namespace FRCards.Converters
                 }
             }
 
-            if (card.Model.Rider == RiderType.Sprinteur)
+            if (card.Rider == RiderType.Sprinteur)
             {
                 if (!faceUp)
                     return ImageSource.FromResource("FRCards.Assets.SBack_200h.png", thisAssembly);
 
-                if (card.Model.IsExhaustion)
+                if (card.IsExhaustion)
                     return ImageSource.FromResource("FRCards.Assets.SExh_200h.png", thisAssembly);
 
-                switch (card.Model.Movement)
+                switch (card.Movement)
                 {
                     case 2: return ImageSource.FromResource("FRCards.Assets.S2_200h.png", thisAssembly);
                     case 3: return ImageSource.FromResource("FRCards.Assets.S3_200h.png", thisAssembly);

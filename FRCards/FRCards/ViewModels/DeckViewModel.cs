@@ -15,6 +15,8 @@ namespace FRCards.ViewModels
             set => SetProperty(ref model, value);
         }
 
+        public CardViewModel NullCard { get; }
+
         public CardViewModel topCard = null;
         public CardViewModel TopCard
         {
@@ -29,21 +31,17 @@ namespace FRCards.ViewModels
             set => SetProperty(ref isFaceUp, value);
         }
 
-        private bool isDiscarded;
-        public bool IsDiscarded
-        {
-            get => isDiscarded;
-            set => SetProperty(ref isDiscarded, value);
-        }
+        public bool IsDiscard { get; }
 
-        public DeckViewModel(bool isDiscarded=false)
+        public DeckViewModel(bool isDiscard=false)
         {
             model = new Deck()
             {
                 Cards = new Stack<Card>()
             };
             isFaceUp = false;
-            this.isDiscarded = isDiscarded;
+            this.IsDiscard = isDiscard;
+            NullCard = new CardViewModel(null, isDiscard);
             setTopCard();
         }
 
@@ -71,9 +69,9 @@ namespace FRCards.ViewModels
         private void setTopCard()
         {
             if (HasCards)
-                TopCard = new CardViewModel(model.Cards.Peek(), IsDiscarded);
+                TopCard = new CardViewModel(model.Cards.Peek(), IsDiscard);
             else
-                TopCard = null;
+                TopCard = NullCard;
         }
 
         public CardViewModel DrawTopCard()
@@ -95,6 +93,7 @@ namespace FRCards.ViewModels
         {
             bool prevHasCards = HasCards;
             Model.Cards.Push(card.Model);
+            card.IsDiscarded = IsDiscard;
             TopCard = card;
             OnPropertyChanged(nameof(CardCount));
             if (prevHasCards != HasCards)

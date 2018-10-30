@@ -21,7 +21,7 @@ namespace FRCards.ViewModels
         {
             UsedCards = new DeckViewModel() { IsFaceUp = true };
             ActiveDeck = new DeckViewModel() { IsFaceUp = false };
-            Discarded = new DeckViewModel() { IsFaceUp = true, IsDiscarded = true };
+            Discarded = new DeckViewModel(true) { IsFaceUp = true };
             SelectionCards = null;
             SelectedCard = null;
 

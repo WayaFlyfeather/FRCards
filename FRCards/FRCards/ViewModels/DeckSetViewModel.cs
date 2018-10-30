@@ -139,7 +139,7 @@ namespace FRCards.ViewModels
             UsedCards = new DeckViewModel() { IsFaceUp = true };
         }
 
-        public bool HasSelectedCard => SelectedCard != null;
+        public bool HasSelectedCard => SelectedCard?.Model != null;
 
         public void FinishRound()
         {
