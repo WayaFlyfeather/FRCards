@@ -67,17 +67,17 @@
                 </Grid.ColumnDefinitions>
                 <local:CardView x:Name="finishedCardWithExhaustion" Grid.Row="0" Grid.Column="0" BindingContext="{Binding SelectedCard}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" TranslationX="50" Margin="0, 0, 75, 0">
                     <local:CardView.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundWithExhaustionCommand}" />
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundWithExhaustionCommand}" />
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
                 <local:CardView x:Name="finishedExhaustionCard" Grid.Row="0" Grid.Column="0" BindingContext="{Binding DisplayExhaustionCard}" IsVisible="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" TranslationX="-50" Margin="0, 0, 75, 0">
                     <local:CardView.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundWithExhaustionCommand}" />
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundWithExhaustionCommand}" />
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
                 <local:CardView x:Name="finishedCard" Grid.Row="0" Grid.Column="1" BindingContext="{Binding SelectedCard}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" Margin="75, 0, 0, 0">
                     <local:CardView.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundCommand}" />
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundCommand}" />
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
             </Grid>
