@@ -52,15 +52,11 @@ namespace FRCards.Views
             {
                 if (ViewModel?.SelectionCards != null)
                 {
-                    selectionCardsGrid.IsVisible = true;
-                    selectionCardView0.BindingContext = ViewModel.SelectionCards[0];
-                    selectionCardView1.BindingContext = ViewModel.SelectionCards[1];
-                    selectionCardView2.BindingContext = ViewModel.SelectionCards[2];
-                    await moveSelectionCardsFromDeckToSelection();
+                    await MoveSelectionCardsFromDeckToSelection();
                 }
                 else
                 {
-                    await moveCardsFromSelection();
+                    await MoveCardsFromSelection();
                 }
             }
 
@@ -68,22 +64,26 @@ namespace FRCards.Views
             {
                 if (ViewModel.CanFinishRound)
                 {
-                    await Task.Delay(1000); //allow previous animations time to finish
-                    await moveToFinishPositionsAsync();
+                    await MoveToFinishPositionsAsync();
                 }
                 else
                 {
-                    await moveFinishCardsToDeck();
+                    await MoveFinishCardsToDeck();
                 }
             }
         }
 
         bool isAnimating = false;
-        async Task moveSelectionCardsFromDeckToSelection()
+        public async Task MoveSelectionCardsFromDeckToSelection()
         {
             if (isAnimating)
                 return;
             isAnimating = true;
+
+            selectionCardsGrid.IsVisible = true;
+            selectionCardView0.BindingContext = ViewModel.SelectionCards[0];
+            selectionCardView1.BindingContext = ViewModel.SelectionCards[1];
+            selectionCardView2.BindingContext = ViewModel.SelectionCards[2];
 
             await Task.Delay(50);
 
@@ -102,7 +102,7 @@ namespace FRCards.Views
             isAnimating = false;
         }
 
-        async Task moveCardsFromSelection()
+        public async Task MoveCardsFromSelection()
         {
             if (isAnimating)
                 return;
@@ -120,8 +120,10 @@ namespace FRCards.Views
             isAnimating = false;
         }
 
-        async Task moveToFinishPositionsAsync()
+        public async Task MoveToFinishPositionsAsync()
         {
+            await Task.Delay(1000); //allow previous animations time to finish
+
             if (isAnimating)
                 return;
             isAnimating = true;
@@ -148,7 +150,7 @@ namespace FRCards.Views
             isAnimating = false;
         }
 
-        async Task moveFinishCardsToDeck()
+        public async Task MoveFinishCardsToDeck()
         {
             if (isAnimating)
                 return;
