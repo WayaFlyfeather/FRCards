@@ -122,11 +122,10 @@ namespace FRCards.ViewModels
 
             for (int idx=0; idx < 3; idx++)
             {
-                if (idx == selection)
-                    SelectedCard = SelectionCards[idx];
-                else
+                if (idx != selection)
                     UsedCards.AddCard(SelectionCards[idx]);
             }
+            SelectedCard = SelectionCards[selection];
 
             SelectionCards = null;
         }

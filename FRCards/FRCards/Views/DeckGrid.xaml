@@ -8,6 +8,7 @@
              BindingContext="{x:Static vm:DesignTimeViewModels.DesignTimeDeck}"       
              HorizontalOptions="Center"
              VerticalOptions="Center"
+             IsClippedToBounds="False"
              x:Class="FRCards.Views.DeckGrid">
         <!--Grid Children set in codebehind.-->
 </Grid>

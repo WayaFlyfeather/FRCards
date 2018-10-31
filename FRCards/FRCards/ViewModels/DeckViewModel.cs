@@ -24,6 +24,7 @@ namespace FRCards.ViewModels
             set => SetProperty(ref topCard, value);
         }
 
+        public bool AnimatedAdd { get; }
         private bool isFaceUp;
         public bool IsFaceUp
         {
@@ -33,7 +34,7 @@ namespace FRCards.ViewModels
 
         public bool IsDiscard { get; }
 
-        public DeckViewModel(bool isDiscard=false)
+        public DeckViewModel(bool isDiscard=false, bool animatedAdd=false)
         {
             model = new Deck()
             {
@@ -42,6 +43,7 @@ namespace FRCards.ViewModels
             isFaceUp = false;
             this.IsDiscard = isDiscard;
             NullCard = new CardViewModel(null, isDiscard);
+            this.AnimatedAdd = animatedAdd;
             setTopCard();
         }
 
@@ -89,7 +91,37 @@ namespace FRCards.ViewModels
             return retCard;
         }
 
+        Queue<CardViewModel> animationCardQueue = new Queue<CardViewModel>();
+        public int WaitingAnimationCount => animationCardQueue.Count;
+        public bool HasWaitingAnimations => animationCardQueue.Count > 0;
+
+        public CardViewModel GetNextCardForAnimation()
+        {
+            bool prevHasWaitingAnimations = HasWaitingAnimations;
+            CardViewModel nextCard = animationCardQueue.Dequeue();
+
+            OnPropertyChanged(nameof(WaitingAnimationCount));
+            if (prevHasWaitingAnimations != HasWaitingAnimations)
+                OnPropertyChanged(nameof(HasWaitingAnimations));
+
+            return nextCard;
+        }
+
         public void AddCard(CardViewModel card)
+        {
+            if (AnimatedAdd)
+            {
+                bool prevHasWaitingAnimations = HasWaitingAnimations;
+                animationCardQueue.Enqueue(card);
+                OnPropertyChanged(nameof(WaitingAnimationCount));
+                if (prevHasWaitingAnimations != HasWaitingAnimations)
+                    OnPropertyChanged(nameof(HasWaitingAnimations));
+            }
+            else
+                AddAfterAnimation(card);
+        }
+
+        public void AddAfterAnimation(CardViewModel card)
         {
             bool prevHasCards = HasCards;
             Model.Cards.Push(card.Model);

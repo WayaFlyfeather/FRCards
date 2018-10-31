@@ -78,5 +78,25 @@ namespace FRCards.Views
             topCardView.SetBinding(CardView.IsFaceUpProperty, new Binding("BindingContext.IsFaceUp", source: this));
             Children.Add(topCardView);
         }
+
+        public async Task<bool> AnimateCardIn(CardViewModel card, double FromX, double FromY, uint length=250)
+        {
+            CardView animateCard = new CardView()
+            {
+                TranslationX = -ViewModel.CardCount,
+                TranslationY = -ViewModel.CardCount,
+                BindingContext = card,
+                IsTappable = false,
+                IsFaceUp = true,
+                IsVisibleWithoutAnimation = false
+            };
+            Children.Add(animateCard);
+            animateCard.PrepareAnimateMove(this.X - FromX, this.Y - FromY, false);
+            await animateCard.AnimateMove(length);
+            Children.Remove(animateCard);
+            ViewModel.AddAfterAnimation(card);
+
+            return true;
+        }
 	}
 }
