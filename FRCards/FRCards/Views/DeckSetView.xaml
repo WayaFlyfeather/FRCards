@@ -6,11 +6,12 @@
              xmlns:vm="clr-namespace:FRCards.ViewModels"
              xmlns:trg="clr-namespace:FRCards.Triggers"
              x:Name="thisDeckSetView"
+             BackgroundColor="{Binding SetRiderType, Converter={StaticResource RiderTypeToBackgroundColor}}" 
              BindingContext="{x:Static vm:DesignTimeViewModels.DesignRouleurDeckSetViewModel}"
              x:Class="FRCards.Views.DeckSetView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <conv:CardToImageSourceConverter x:Key="CardToImageSource" />
+            <conv:RiderTypeToBackgroundColorConverter x:Key="RiderTypeToBackgroundColor" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Triggers>
