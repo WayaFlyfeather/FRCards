@@ -50,7 +50,6 @@
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.DrawCardsCommand}"/>
                 </local:DeckGrid.GestureRecognizers>
             </local:DeckGrid>
-            <local:DeckGrid x:Name="usedDeckGrid" Grid.Row="1" Grid.Column="0" BindingContext="{Binding UsedCards}" IsTappable="False" />
             <Grid x:Name="selectionCardsGrid" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -60,9 +59,9 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <local:CardView x:Name="selectionCardView0" Grid.Row="0" Grid.Column="0" IsVisibleWithoutAnimation="False" IsTappable="True">
+                <local:CardView x:Name="selectionCardView2" Grid.Row="0" Grid.Column="2" IsVisibleWithoutAnimation="False" IsTappable="True">
                     <local:CardView.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="0" />
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="2" />
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
                 <local:CardView x:Name="selectionCardView1" Grid.Row="0" Grid.Column="1" IsVisibleWithoutAnimation="False" IsTappable="True">
@@ -70,12 +69,13 @@
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="1" />
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
-                <local:CardView x:Name="selectionCardView2" Grid.Row="0" Grid.Column="2" IsVisibleWithoutAnimation="False" IsTappable="True">
+                <local:CardView x:Name="selectionCardView0" Grid.Row="0" Grid.Column="0" IsVisibleWithoutAnimation="False" IsTappable="True">
                     <local:CardView.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="2" />
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.SelectCardCommand}" CommandParameter="0" />
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
             </Grid>
+            <local:DeckGrid x:Name="usedDeckGrid" Grid.Row="1" Grid.Column="0" BindingContext="{Binding UsedCards}" IsTappable="False" />
             <local:CardView x:Name="selectedCardView" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" BindingContext="{Binding SelectedCard}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" IsVisible="false" />
             <Grid x:Name="finishingCardGrid" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
                 <Grid.RowDefinitions>
