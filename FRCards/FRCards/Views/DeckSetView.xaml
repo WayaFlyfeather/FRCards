@@ -22,6 +22,14 @@
                 <trg:AnimateCardsFromSelectionToUsedAndSelected />
             </DataTrigger.ExitActions>
         </DataTrigger>
+        <DataTrigger TargetType="local:DeckSetView" Binding="{Binding CanFinishRound}" Value="True">
+            <DataTrigger.EnterActions>
+                <trg:AnimateCardsToFinishingPositionsAction />
+            </DataTrigger.EnterActions>
+            <DataTrigger.ExitActions>
+                <trg:AnimateCardsFromFinishingChoicesToDecksAction />
+            </DataTrigger.ExitActions>
+        </DataTrigger>
     </ContentView.Triggers>
     <ContentView.Content>
         <Grid>

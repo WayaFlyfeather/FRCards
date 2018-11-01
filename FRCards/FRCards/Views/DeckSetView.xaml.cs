@@ -23,42 +23,10 @@ namespace FRCards.Views
         public static readonly BindableProperty RiderProperty = BindableProperty.Create("Rider", typeof(string), typeof(DeckSetView), "");
 
         public DeckSetViewModel ViewModel => this.BindingContext as DeckSetViewModel;
-        DeckSetViewModel prevViewModel = null;
 
         public DeckSetView()
         {
             InitializeComponent();
-            OnBindingContextChanged();
-        }
-
-        protected override void OnBindingContextChanged()
-        {
-            if (prevViewModel != null)
-            {
-                prevViewModel.PropertyChanged -= ViewModel_PropertyChanged;
-            }
-
-            base.OnBindingContextChanged();
-
-            if (ViewModel != null)
-            {
-                ViewModel.PropertyChanged += ViewModel_PropertyChanged;
-            }
-        }
-
-        private async void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (String.IsNullOrEmpty(e.PropertyName) || e.PropertyName == nameof(DeckSetViewModel.CanFinishRound))
-            {
-                if (ViewModel.CanFinishRound)
-                {
-                    await MoveToFinishPositionsAsync();
-                }
-                else
-                {
-                    await MoveFinishCardsToDeck();
-                }
-            }
         }
 
         bool isAnimating = false;
