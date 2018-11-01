@@ -9,8 +9,8 @@ namespace FRCards.Converters
 {
     public class RiderTypeToBackgroundColorConverter : IValueConverter
     {
-        static Color RouleurColor { get; } = new Color(0.8, 0.2, 0.2, 0.2);
-        static Color SprinteurColor { get; } = new Color(0.2, 0.2, 0.8, 0.2);
+        static Color RouleurColor { get; } = new Color(0.83, 0.51, 0.25, 0.2);
+        static Color SprinteurColor { get; } = new Color(0.16, 0.16, 0.3, 0.2);
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
 
