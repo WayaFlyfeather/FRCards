@@ -101,7 +101,11 @@
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
             </Grid>
-            <local:DeckGrid x:Name="discardedDeckGrid" Grid.Row="1" Grid.Column="3" BindingContext="{Binding Discarded}" IsTappable="False" />
+            <local:DeckGrid x:Name="discardedDeckGrid" Grid.Row="1" Grid.Column="3" BindingContext="{Binding Discarded}" IsTappable="False">
+                <local:DeckGrid.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.RequestGameResetCommand}"/>
+                </local:DeckGrid.GestureRecognizers>
+            </local:DeckGrid>
         </Grid>
   </ContentView.Content>
 </ContentView>
