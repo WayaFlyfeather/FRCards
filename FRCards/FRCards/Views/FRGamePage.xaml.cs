@@ -19,5 +19,10 @@ namespace FRCards.Views
 		{
 			InitializeComponent ();
 		}
+
+        public async Task RequestGameReset()
+        {
+            BindingContext = new GameDeckSetsViewModel();
+        }
 	}
 }
