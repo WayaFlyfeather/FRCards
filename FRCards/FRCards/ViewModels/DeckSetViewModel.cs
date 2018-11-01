@@ -22,6 +22,13 @@ namespace FRCards.ViewModels
             set => SetProperty(ref activeDeck, value);
         }
 
+
+        protected RiderType setRiderType;
+        public RiderType SetRiderType
+        {
+            get => setRiderType;
+        }
+
         private DeckViewModel usedCards;
         public DeckViewModel UsedCards
         {
