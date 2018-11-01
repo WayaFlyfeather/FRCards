@@ -22,7 +22,13 @@ namespace FRCards.Views
 
         public async Task RequestGameReset()
         {
-            BindingContext = new GameDeckSetsViewModel();
+            if (await DisplayAlert("Restart Game?", "Are you sure you want to start a new game?", "Yes", "No")==true)
+                BindingContext = new GameDeckSetsViewModel();
+            else
+            {
+                ViewModel.RouleurSet.GameResetRequested = false;
+                ViewModel.SprinteurSet.GameResetRequested = false;
+            }
         }
 	}
 }

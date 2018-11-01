@@ -23,8 +23,8 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <local:DeckSetView Grid.Row="0" BindingContext="{Binding RouleurSet}" Rider="Rouleur" />
-            <local:DeckSetView Grid.Row="1" BindingContext="{Binding SprinteurSet}" Rider="Sprinteur" />
+            <local:DeckSetView x:Name="RouleurDeckSetView" Grid.Row="0" BindingContext="{Binding RouleurSet}" Rider="Rouleur" />
+            <local:DeckSetView x:Name="SprinteurDeckSetView" Grid.Row="1" BindingContext="{Binding SprinteurSet}" Rider="Sprinteur" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
