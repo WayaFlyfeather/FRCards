@@ -94,6 +94,13 @@ namespace FRCards.ViewModels
             }
         }
 
+        private bool gameResetRequested = false;
+        public bool GameResetRequested
+        {
+            get => gameResetRequested;
+            set => SetProperty(ref gameResetRequested, value);
+        }
+
         private CardViewModel selectedCard;
         public CardViewModel SelectedCard
         {
@@ -179,5 +186,8 @@ namespace FRCards.ViewModels
 
         private Command finishRoundWithExhaustionCommand;
         public ICommand FinishRoundWithExhaustionCommand => finishRoundWithExhaustionCommand ?? (finishRoundWithExhaustionCommand = new Command(FinishRoundWithExhaustion, () => HasSelectedCard));
+
+        private Command requestGameResetCommand;
+        public ICommand RequestGameResetCommand => requestGameResetCommand ?? (requestGameResetCommand = new Command(() => GameResetRequested = true));
     }
 }
