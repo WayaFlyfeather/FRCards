@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:FRCards.Views"
              xmlns:conv="clr-namespace:FRCards.Converters"
              xmlns:vm="clr-namespace:FRCards.ViewModels"
+             xmlns:trg="clr-namespace:FRCards.Triggers"
              x:Name="thisDeckSetView"
              BindingContext="{x:Static vm:DesignTimeViewModels.DesignRouleurDeckSetViewModel}"
              x:Class="FRCards.Views.DeckSetView">
@@ -12,6 +13,16 @@
             <conv:CardToImageSourceConverter x:Key="CardToImageSource" />
         </ResourceDictionary>
     </ContentView.Resources>
+    <ContentView.Triggers>
+        <DataTrigger TargetType="local:DeckSetView" Binding="{Binding CanSelect}" Value="True">
+            <DataTrigger.EnterActions>
+                <trg:AnimateCardsFromActiveDeckAction />
+            </DataTrigger.EnterActions>
+            <DataTrigger.ExitActions>
+                <trg:AnimateCardsFromSelectionToUsedAndSelected />
+            </DataTrigger.ExitActions>
+        </DataTrigger>
+    </ContentView.Triggers>
     <ContentView.Content>
         <Grid>
             <Grid.RowDefinitions>

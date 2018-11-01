@@ -48,18 +48,6 @@ namespace FRCards.Views
 
         private async void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (String.IsNullOrEmpty(e.PropertyName) || e.PropertyName == nameof(DeckSetViewModel.SelectionCards))
-            {
-                if (ViewModel?.SelectionCards != null)
-                {
-                    await MoveSelectionCardsFromDeckToSelection();
-                }
-                else
-                {
-                    await MoveCardsFromSelection();
-                }
-            }
-
             if (String.IsNullOrEmpty(e.PropertyName) || e.PropertyName == nameof(DeckSetViewModel.CanFinishRound))
             {
                 if (ViewModel.CanFinishRound)
