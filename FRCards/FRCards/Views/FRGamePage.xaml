@@ -18,13 +18,12 @@
     </ContentPage.Triggers>
 
     <ContentPage.Content>
-        <Grid RowSpacing="0">
+        <Grid x:Name="gameGrid" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <local:DeckSetView x:Name="RouleurDeckSetView" Grid.Row="0" BindingContext="{Binding RouleurSet}" Rider="Rouleur" />
-            <local:DeckSetView x:Name="SprinteurDeckSetView" Grid.Row="1" BindingContext="{Binding SprinteurSet}" Rider="Sprinteur" />
+            <!--Grid content set in code-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

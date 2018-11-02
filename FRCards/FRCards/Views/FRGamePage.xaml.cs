@@ -17,8 +17,36 @@ namespace FRCards.Views
 
 		public FRGamePage ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
+            OnBindingContextChanged();
 		}
+
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+
+            DeckSetView rouleurDeckSetView = new DeckSetView()
+            {
+                Rider = "Rouleur"
+            };
+            rouleurDeckSetView.SetBinding(DeckSetView.BindingContextProperty, "RouleurSet");
+
+            DeckSetView sprinteurDeckSetView = new DeckSetView()
+            {
+                Rider = "Sprinteur"
+            };
+            sprinteurDeckSetView.SetBinding(DeckSetView.BindingContextProperty, "SprinteurSet");
+
+            foreach (View v in gameGrid.Children)
+            {
+                v.Triggers.Clear();
+                v.BindingContext = null;
+            }
+            gameGrid.Children.Clear();
+
+            gameGrid.Children.Add(rouleurDeckSetView, 0, 0);
+            gameGrid.Children.Add(sprinteurDeckSetView, 0, 1);
+        }
 
         public async Task RequestGameReset()
         {
