@@ -53,9 +53,10 @@ namespace FRCards.Views
                 return;
 
             Children.Clear();
-            for (int deckCard=ViewModel.CardCount; deckCard > 0; deckCard--)
+            Grid deckGrid = new Grid();
+            for (int deckCard = ViewModel.CardCount; deckCard > 0; deckCard--)
             {
-                Children.Add(new Frame()
+                deckGrid.Children.Add(new Frame()
                 {
                     BorderColor = deckCard % 2 == 1 ? Color.DarkGray : Color.Black,
                     HeightRequest = 200,
@@ -66,8 +67,9 @@ namespace FRCards.Views
                     BackgroundColor = Color.White,
                     TranslationX = deckCard - ViewModel.CardCount,
                     TranslationY = deckCard - ViewModel.CardCount
-                });                    
+                });
             }
+            Children.Add(deckGrid);
             CardView topCardView = new CardView()
             {
                 TranslationX = -ViewModel.CardCount,
