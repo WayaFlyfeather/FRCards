@@ -39,7 +39,6 @@ namespace FRCards.Views
 
             foreach (View v in gameGrid.Children)
             {
-                v.Triggers.Clear();
                 v.BindingContext = null;
             }
             gameGrid.Children.Clear();
