@@ -36,7 +36,7 @@
         </DataTrigger>
     </ContentView.Triggers>
     <ContentView.Content>
-        <Grid x:Name="contentGrid" HorizontalOptions="Start" Padding="0" Margin="0">
+        <Grid x:Name="contentGrid" HorizontalOptions="Start" Padding="0" Margin="30" AnchorX="0.0" AnchorY="0.0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="45" />
                 <RowDefinition Height="280" />
@@ -88,17 +88,17 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <local:CardView x:Name="finishedCardWithExhaustion" Grid.Row="0" Grid.Column="0" BindingContext="{Binding SelectedCard}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" TranslationX="50" Margin="0, 0, 75, 0">
+                <local:CardView x:Name="finishedCardWithExhaustion" Grid.Row="0" Grid.Column="0" BindingContext="{Binding SelectedCard}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" TranslationX="25" Margin="0, 0, 40, 0">
                     <local:CardView.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundWithExhaustionCommand}" />
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
-                <local:CardView x:Name="finishedExhaustionCard" Grid.Row="0" Grid.Column="0" BindingContext="{Binding DisplayExhaustionCard}" IsVisible="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" TranslationX="-50" Margin="0, 0, 75, 0">
+                <local:CardView x:Name="finishedExhaustionCard" Grid.Row="0" Grid.Column="0" BindingContext="{Binding DisplayExhaustionCard}" IsVisible="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" TranslationX="-25" Margin="0, 0, 40, 0">
                     <local:CardView.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundWithExhaustionCommand}" />
                     </local:CardView.GestureRecognizers>
                 </local:CardView>
-                <local:CardView x:Name="finishedCard" Grid.Row="0" Grid.Column="1" BindingContext="{Binding SelectedCard}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" Margin="75, 0, 0, 0">
+                <local:CardView x:Name="finishedCard" Grid.Row="0" Grid.Column="1" BindingContext="{Binding SelectedCard}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanFinishRound}" Margin="40, 0, 0, 0">
                     <local:CardView.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.FinishRoundCommand}" />
                     </local:CardView.GestureRecognizers>

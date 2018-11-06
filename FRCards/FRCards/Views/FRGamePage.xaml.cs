@@ -15,9 +15,7 @@ namespace FRCards.Views
 	{
         public GameDeckSetsViewModel ViewModel => BindingContext as GameDeckSetsViewModel;
 
-        double translating;
         double scaling;
-        public double Scaling => scaling;
 
 		public FRGamePage ()
 		{
@@ -34,18 +32,16 @@ namespace FRCards.Views
 
         private void sizeChanged()
         {
-            translating = (Width - 1020.0) / 3.5;
-            double scalingX = Width / 1020.0;
-            double scalingY = Height / 670.0;
+            double scalingX = Width / 1080.0;
+            double scalingY = Height / 780.0;
 
             scaling = Math.Min(scalingX, scalingY);
             foreach (View v in gameGrid.Children)
             {
                 DeckSetView dsv = v as DeckSetView;
                 if (dsv != null)
-                    dsv.SetInnerScale(scaling, translating);
+                    dsv.SetInnerScale(scaling);
             }
-//            Scale = scaling;
         }
 
         protected override void OnBindingContextChanged()
@@ -54,19 +50,17 @@ namespace FRCards.Views
 
             DeckSetView rouleurDeckSetView = new DeckSetView()
             {
-                Rider = "Rouleur",
-                //Scale = scaling
+                Rider = "Rouleur"
             };
             rouleurDeckSetView.SetBinding(DeckSetView.BindingContextProperty, "RouleurSet");
-            rouleurDeckSetView.SetInnerScale(scaling, translating);
+            rouleurDeckSetView.SetInnerScale(scaling);
 
             DeckSetView sprinteurDeckSetView = new DeckSetView()
             {
-                Rider = "Sprinteur",
-//                Scale = scaling
+                Rider = "Sprinteur"
             };
             sprinteurDeckSetView.SetBinding(DeckSetView.BindingContextProperty, "SprinteurSet");
-            sprinteurDeckSetView.SetInnerScale(scaling, translating);
+            sprinteurDeckSetView.SetInnerScale(scaling);
 
             foreach (View v in gameGrid.Children)
             {
