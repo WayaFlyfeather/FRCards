@@ -196,5 +196,10 @@ namespace FRCards.Views
             }
         }
 
+        public void SetInnerScale(double scale, double translate)
+        {
+            contentGrid.Scale = scale;
+            contentGrid.TranslationX = translate * scale;
+        }
     }
 }

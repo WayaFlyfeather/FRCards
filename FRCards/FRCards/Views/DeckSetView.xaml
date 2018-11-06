@@ -6,6 +6,9 @@
              xmlns:vm="clr-namespace:FRCards.ViewModels"
              xmlns:trg="clr-namespace:FRCards.Triggers"
              x:Name="thisDeckSetView"
+             HorizontalOptions="Fill"
+             Padding="0"
+             Margin="0"
              BackgroundColor="{Binding SetRiderType, Converter={StaticResource RiderTypeToBackgroundColor}}" 
              BindingContext="{x:Static vm:DesignTimeViewModels.DesignRouleurDeckSetViewModel}"
              x:Class="FRCards.Views.DeckSetView">
@@ -33,16 +36,16 @@
         </DataTrigger>
     </ContentView.Triggers>
     <ContentView.Content>
-        <Grid>
+        <Grid x:Name="contentGrid" HorizontalOptions="Start" Padding="0" Margin="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="280" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="460" />
+                <ColumnDefinition Width="180" />
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.ColumnSpan="4" BindingContext="{x:Reference thisDeckSetView}" Text="{Binding Rider}" FontSize="Large" HorizontalOptions="Center"/>
             <local:DeckGrid x:Name="activeDeckGrid" Grid.Row="1" Grid.Column="1" BindingContext="{Binding ActiveDeck}" IsTappable="{Binding Source={x:Reference thisDeckSetView}, Path=BindingContext.CanDrawCards}">
